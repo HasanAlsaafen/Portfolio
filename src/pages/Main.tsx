@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 import AboutSection from "../components/AboutSection";
 import Projects from "../components/Projects";
 import Certificates from "../components/Certificates";
