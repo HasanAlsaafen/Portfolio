@@ -6,16 +6,17 @@ import CertifacateManage from "../components/dashboard/CertifacteManage";
 import MessageManage from "../components/dashboard/MessageManage";
 import ColorManage from "../components/dashboard/ColorManage";
 import { useState, useEffect } from "react";
-
+import { useApi } from "../hooks/useApi";
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export default function Dashboard() {
+  const { request } = useApi();
   const [selectedItem, setSelectedItem] = useState("Main");
   const [hasNotifications, setHasNotifications] = useState(false);
 
   const checkNotifications = async () => {
     try {
-      const response = await fetch(`${API_URL}/messages?limit=1`);
+      const response = await request(`${API_URL}/messages?limit=1`);
       if (response.ok) {
         const data = await response.json();
         setHasNotifications(data.length > 0);
