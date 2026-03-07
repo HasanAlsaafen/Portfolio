@@ -17,7 +17,7 @@ import StatusAlert from "../common/StatusAlert";
 interface Certificate {
   _id: string;
   title: string;
-  issyuer: string;
+  issuer: string;
   issueDate: string;
   description: string;
   credentialURL: string;
@@ -42,7 +42,7 @@ export default function CertifacateManage() {
   
   const [formData, setFormData] = useState<Omit<Certificate, "_id">>({
     title: "",
-    issyuer: "",
+    issuer: "",
     issueDate: new Date().toISOString().split("T")[0],
     description: "",
     credentialURL: "",
@@ -82,12 +82,14 @@ export default function CertifacateManage() {
     const url = editingCertificate ? `${API_URL}/${editingCertificate._id}` : API_URL;
 
     try {
+      const payloadDate = new Date(formData.issueDate).toISOString();
+      const payload = { ...formData, issueDate: payloadDate };
       const response = await request(url, {
         method,
         headers: { 
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
       if (!response.ok) throw new Error("Failed to save certificate");
 
@@ -96,7 +98,7 @@ export default function CertifacateManage() {
       setEditingCertificate(null);
       setFormData({
         title: "",
-        issyuer: "",
+        issuer: "",
         issueDate: new Date().toISOString().split("T")[0],
         description: "",
         credentialURL: "",
@@ -113,7 +115,7 @@ export default function CertifacateManage() {
     setEditingCertificate(cert);
     setFormData({
       title: cert.title,
-      issyuer: cert.issyuer,
+      issuer: cert.issuer,
       issueDate: new Date(cert.issueDate).toISOString().split("T")[0],
       description: cert.description,
       credentialURL: cert.credentialURL,
@@ -155,7 +157,7 @@ export default function CertifacateManage() {
                     setEditingCertificate(null);
                     setFormData({
                       title: "",
-                      issyuer: "",
+                      issuer: "",
                       issueDate: new Date().toISOString().split("T")[0],
                       description: "",
                       credentialURL: "",
@@ -201,8 +203,8 @@ export default function CertifacateManage() {
                   <label className="text-sm font-semibold text-gray-400">Issuer</label>
                   <input
                     type="text"
-                    name="issyuer"
-                    value={formData.issyuer}
+                    name="issuer"
+                    value={formData.issuer}
                     onChange={handleInputChange}
                     placeholder="Organization name"
                     className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
@@ -324,7 +326,7 @@ export default function CertifacateManage() {
                     </div>
                     <div className="p-5 flex-1 flex flex-col">
                       <h3 className="text-lg font-bold text-text mb-2 line-clamp-1">{cert.title}</h3>
-                      <p className="text-primary text-xs font-bold mb-1">{cert.issyuer}</p>
+                      <p className="text-primary text-xs font-bold mb-1">{cert.issuer}</p>
                       <p className="text-gray-500 text-[10px] mb-3">{new Date(cert.issueDate).toLocaleDateString()}</p>
                       <p className="text-gray-500 text-xs mb-4 line-clamp-2 flex-1">{cert.description}</p>
                       <div className="flex items-center gap-3 mt-auto">

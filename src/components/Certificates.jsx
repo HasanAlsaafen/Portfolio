@@ -33,7 +33,7 @@ const CertificateCard = ({ certificate }) => {
             {certificate.title}
           </h3>
           <p className="text-sm text-gray-400 mb-1">
-            <strong>Issuer:</strong> {certificate.issyuer}
+            <strong>Issuer:</strong> {certificate.issuer}
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-4">
             {certificate.description}
