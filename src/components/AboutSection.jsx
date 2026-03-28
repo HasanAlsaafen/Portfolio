@@ -21,6 +21,7 @@ import {
   faLinkedin
 } from "@fortawesome/free-brands-svg-icons";
 import { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -49,8 +50,10 @@ const SkillBadge = ({ icon, label }) => (
 );
 
 const FALLBACK_HERO_DATA = {
-  heading: "A Full-Stack Fromt-End Developer\nBuilding Digital Excellence",
+  heading: "A Full-Stack Front-End Developer\nBuilding Digital Excellence",
+  heading_ar: "مطور ويب شامل\nبناء التميز الرقمي",
   subheading: "I specialize in creating high-performance web applications with modern technologies. Focused on clean code and user experiences.",
+  subheading_ar: "أتخصص في إنشاء تطبيقات ويب عالية الأداء باستخدام أحدث التقنيات. أركز على الكود النظيف وتجربة المستخدم.",
   cards: [
     { icon: "Code2", title: "Full-stack Dev" },
     { icon: "Terminal", title: "Clean Code" },
@@ -58,10 +61,12 @@ const FALLBACK_HERO_DATA = {
   ],
   CV: cv,
   ctaText: "Get in touch",
+  ctaText_ar: "تواصل معي",
   backgroundImage: fs1 
 };
 
 const AboutSection = () => {
+  const { isArabic } = useLanguage();
   const [heroData, setHeroData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -114,13 +119,13 @@ const AboutSection = () => {
               className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
               id="about-heading"
             >
-              Full-Stack front-end developer
+              {isArabic ? "مطور واجهات أمامية شامل" : "Full-Stack front-end developer"}
             </h2>
             <h3 className="text-4xl lg:text-5xl font-extrabold text-text leading-[1.1] mb-6 whitespace-pre-line">
-              {displayData.heading}
+              {isArabic ? (displayData.heading_ar || displayData.heading) : displayData.heading}
             </h3>
             <p className="text-lg text-text leading-relaxed font-medium max-w-2xl whitespace-pre-line">
-              {displayData.subheading}
+              {isArabic ? (displayData.subheading_ar || displayData.subheading) : displayData.subheading}
             </p>
           </header>
 
@@ -141,14 +146,14 @@ const AboutSection = () => {
                 rel="noopener noreferrer"
                 aria-label="Download CV as PDF"
               >
-                Download My CV <FontAwesomeIcon icon={faDownload} />
+                {isArabic ? "تحميل السيرة الذاتية" : "Download My CV"} <FontAwesomeIcon icon={faDownload} />
               </a>
             )}
             <a 
               href="#contact" 
               className="text-text font-bold hover:text-primary transition-colors flex items-center gap-2 group focus:ring-2 focus:ring-primary rounded-lg p-1 outline-none"
             >
-              {displayData.ctaText || "Let's talk"} <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+              {isArabic ? (displayData.ctaText_ar || displayData.ctaText || "لنتحدث") : (displayData.ctaText || "Let's talk")} <span className={`${isArabic ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform`} aria-hidden="true">{isArabic ? '←' : '→'}</span>
             </a>
           </div>
         </div>

@@ -18,7 +18,9 @@ interface Project {
   _id?: string;
   id?: string;
   title: string;
+  title_ar: string;
   description: string;
+  description_ar: string;
   imageUrl: string;
   projectUrl: string;
   technologies: string[];
@@ -48,7 +50,9 @@ export const ProjectManage = () => {
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [formData, setFormData] = useState<Project>({
     title: "",
+    title_ar: "",
     description: "",
+    description_ar: "",
     imageUrl: "",
     projectUrl: "",
     technologies: [],
@@ -129,7 +133,9 @@ export const ProjectManage = () => {
       setEditingProject(null);
       setFormData({
         title: "",
+        title_ar: "",
         description: "",
+        description_ar: "",
         imageUrl: "",
         projectUrl: "",
         technologies: [],
@@ -187,7 +193,9 @@ export const ProjectManage = () => {
                     setEditingProject(null);
                     setFormData({
                       title: "",
+                      title_ar: "",
                       description: "",
+                      description_ar: "",
                       imageUrl: "",
                       projectUrl: "",
                       technologies: [],
@@ -236,6 +244,20 @@ export const ProjectManage = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-gray-400">
+                    Project Title (Arabic)
+                  </label>
+                  <input
+                    type="text"
+                    name="title_ar"
+                    value={formData.title_ar}
+                    onChange={handleInputChange}
+                    placeholder="عنوان المشروع"
+                    dir="rtl"
+                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-gray-400">
                     Project URL
                   </label>
                   <input
@@ -273,6 +295,19 @@ export const ProjectManage = () => {
                     placeholder="Project description..."
                     className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
                     required
+                  />
+                </div>
+                <div className="md:col-span-2 space-y-2">
+                  <label className="text-sm font-semibold text-gray-400">
+                    Description (Arabic)
+                  </label>
+                  <textarea
+                    name="description_ar"
+                    value={formData.description_ar}
+                    onChange={handleInputChange}
+                    placeholder="وصف المشروع..."
+                    dir="rtl"
+                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">

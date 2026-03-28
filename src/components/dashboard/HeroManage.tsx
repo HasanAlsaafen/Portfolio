@@ -7,7 +7,6 @@ import {
 import Loader from '../common/Loader';
 import ErrorMessage from '../common/ErrorMessage';
 import StatusAlert from '../common/StatusAlert';
-
 interface Card {
   _id?: string;
   title: string;
@@ -17,9 +16,12 @@ interface Card {
 interface HeroData {
   _id?: string;
   heading: string;
+  heading_ar: string;
   subheading: string;
+  subheading_ar: string;
   backgroundImage: string;
   ctaText: string;
+  ctaText_ar: string;
   cards: Card[];
   CV: string;
 }
@@ -35,9 +37,12 @@ export default function HeroManage() {
   const { request } = useApi();
   const [formData, setFormData] = useState<HeroData>({
     heading: '',
+    heading_ar: '',
     subheading: '',
+    subheading_ar: '',
     backgroundImage: '',
     ctaText: '',
+    ctaText_ar: '',
     cards: [],
     CV: ''
   });
@@ -204,6 +209,20 @@ export default function HeroManage() {
               </div>
 
               <div className="space-y-1">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Main Heading (Arabic)</label>
+                <input 
+                  type="text" 
+                  name="heading_ar"
+                  value={formData.heading_ar}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  dir="rtl"
+                  className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all font-medium text-text ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  placeholder="أدخل العنوان الرئيسي"
+                />
+              </div>
+
+              <div className="space-y-1">
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Subheading / Bio</label>
                 <textarea 
                   name="subheading"
@@ -215,7 +234,20 @@ export default function HeroManage() {
                   placeholder="Tell your story..."
                   required
                 />
-                
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Subheading / Bio (Arabic)</label>
+                <textarea 
+                  name="subheading_ar"
+                  value={formData.subheading_ar}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  rows={4}
+                  dir="rtl"
+                  className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all font-medium text-text resize-none ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  placeholder="أخبر قصتك..."
+                />
               </div>
             </div>
           </section>
@@ -270,6 +302,19 @@ export default function HeroManage() {
                     onChange={handleInputChange}
                     disabled={!isEditing}
                     className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">CTA Button Text (Arabic)</label>
+                  <input 
+                    type="text" 
+                    name="ctaText_ar"
+                    value={formData.ctaText_ar}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    dir="rtl"
+                    className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                    placeholder="نص زر الإجراء"
                   />
                 </div>
               </div>

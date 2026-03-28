@@ -2,12 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
+import { Link } from "react-router-dom";
 import Loader from "./common/Loader";
 import ErrorMessage from "./common/ErrorMessage";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-const ProjectCard = ({ project, techColors }) => {
+const ProjectCard = ({ project, techColors, isArabic }) => {
   const getTechStyle = (techName) => {
     const found = techColors.find(c => c.name.toLowerCase() === techName.toLowerCase());
     if (found) {
@@ -19,22 +21,26 @@ const ProjectCard = ({ project, techColors }) => {
   return (
     <article className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-border">
       <div className="relative overflow-hidden">
-        <a href={project.projectUrl || project.link} target="_blank" rel="noreferrer" title="Tap to see">
+        <Link to={`/project/${project._id || project.id}`} title="View Details">
           <img
             src={project.imageUrl}
             alt={project.title}
             className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </a>
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+             <span className="text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300">{isArabic ? "عرض التفاصيل" : "View Details"}</span>
+          </div>
+        </Link>
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold text-text mb-2 group-hover:text-primary transition-colors">
-          {project.title}
-        </h3>
+        <Link to={`/project/${project._id || project.id}`}>
+          <h3 className="text-xl font-bold text-text mb-2 group-hover:text-primary transition-colors inline-block">
+            {isArabic ? (project.title_ar || project.title) : project.title}
+          </h3>
+        </Link>
         <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 line-clamp-3">
-          {project.description}
+          {isArabic ? (project.description_ar || project.description) : project.description}
         </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
@@ -55,7 +61,7 @@ const ProjectCard = ({ project, techColors }) => {
           rel="noreferrer"
           className="inline-flex items-center gap-2 bg-black dark:bg-slate-700 text-white rounded-full py-2 px-5 text-sm font-medium hover:bg-primary transition-colors"
         >
-          View on GitHub <FontAwesomeIcon icon={faArrowRight} />
+          {isArabic ? "عرض على GitHub" : "View on GitHub"} <FontAwesomeIcon icon={faArrowRight} className="rtl:rotate-180" />
         </a>
       </div>
     </article>
@@ -63,6 +69,7 @@ const ProjectCard = ({ project, techColors }) => {
 };
 
 const Projects = () => {
+  const { isArabic } = useLanguage();
   const [projects, setProjects] = useState([]);
   const [techColors, setTechColors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -117,25 +124,25 @@ const Projects = () => {
 
   return (
     <>
-      <div className="mb-12 ml-4 md:ml-24 ">
+      <div className="mb-12 ms-4 md:ms-24 ">
         <h2
           className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
           id="projects"
         >
-          Selected Works
+          {isArabic ? "أعمال مختارة" : "Selected Works"}
         </h2>
         <h3 className="text-4xl font-extrabold text-text leading-tight">
-          Featured <span className="text-primary">Projects</span>
+          {isArabic ? (<>مشاريع <span className="text-primary">مميزة</span></>) : (<>Featured <span className="text-primary">Projects</span></>)}
         </h3>
       </div>
 
       <section 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 ml-4 md:ml-24 min-h-[400px]"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 ms-4 md:ms-24 min-h-[400px]"
         aria-labelledby="projects"
       >
         {loading ? (
           <div className="col-span-full py-10">
-            <Loader message="Fetching creative works..." />
+            <Loader message={isArabic ? "جاري تحميل الأعمال..." : "Fetching creative works..."} />
           </div>
         ) : error ? (
           <div className="col-span-full py-10">
@@ -146,12 +153,12 @@ const Projects = () => {
           </div>
         ) : projects.length > 0 ? (
           projects.map((proj) => (
-            <ProjectCard key={proj._id || proj.id} project={proj} techColors={techColors} />
+            <ProjectCard key={proj._id || proj.id} project={proj} techColors={techColors} isArabic={isArabic} />
           ))
         ) : (
           <div className="col-span-full text-center py-20 text-gray-500 bg-secondary/10 rounded-3xl border border-dashed border-border/50">
-            <p className="font-bold text-lg mb-2">No Projects Found</p>
-            <p className="text-sm">Check back later for new updates!</p>
+            <p className="font-bold text-lg mb-2">{isArabic ? "لا توجد مشاريع" : "No Projects Found"}</p>
+            <p className="text-sm">{isArabic ? "تحقق لاحقاً للتحديثات الجديدة!" : "Check back later for new updates!"}</p>
           </div>
         )}
       </section>
@@ -166,11 +173,11 @@ const Projects = () => {
             className="w-12 h-12 rounded-full border-2 border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed group"
             title="Previous Page"
           >
-            <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5 transition-transform" />
+            <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform rtl:rotate-180" />
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-black uppercase tracking-widest text-gray-400">Page</span>
+            <span className="text-xs font-black uppercase tracking-widest text-gray-400">{isArabic ? "صفحة" : "Page"}</span>
             <span className="text-2xl font-black text-primary min-w-[1.5ch] text-center">{page}</span>
           </div>
 
@@ -183,7 +190,7 @@ const Projects = () => {
             className="w-12 h-12 rounded-full border-2 border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed group"
             title="Next Page"
           >
-            <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5 transition-transform" />
+            <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform rtl:rotate-180" />
           </button>
         </div>
 
@@ -195,7 +202,7 @@ const Projects = () => {
           rel="noreferrer"
           className="bg-black/90 dark:bg-slate-800 text-white rounded-2xl py-4 px-10 no-underline hover:bg-black hover:-translate-y-1 transition-all flex items-center gap-3 font-bold border border-white/10 shadow-xl"
         >
-          Explore All Repositories <FontAwesomeIcon icon={faGithub} className="text-lg" />
+          {isArabic ? "استعراض جميع المستودعات" : "Explore All Repositories"} <FontAwesomeIcon icon={faGithub} className="text-lg" />
         </a>
       </div>
     </>

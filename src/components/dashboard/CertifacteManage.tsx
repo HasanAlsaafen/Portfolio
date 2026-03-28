@@ -20,6 +20,7 @@ interface Certificate {
   issuer: string;
   issueDate: string;
   description: string;
+  description_ar: string;
   credentialURL: string;
   image: string;
 }
@@ -45,6 +46,7 @@ export default function CertifacateManage() {
     issuer: "",
     issueDate: new Date().toISOString().split("T")[0],
     description: "",
+    description_ar: "",
     credentialURL: "",
     image: "",
   });
@@ -101,6 +103,7 @@ export default function CertifacateManage() {
         issuer: "",
         issueDate: new Date().toISOString().split("T")[0],
         description: "",
+        description_ar: "",
         credentialURL: "",
         image: "",
       });
@@ -118,6 +121,7 @@ export default function CertifacateManage() {
       issuer: cert.issuer,
       issueDate: new Date(cert.issueDate).toISOString().split("T")[0],
       description: cert.description,
+      description_ar: cert.description_ar || "",
       credentialURL: cert.credentialURL,
       image: cert.image,
     });
@@ -160,6 +164,7 @@ export default function CertifacateManage() {
                       issuer: "",
                       issueDate: new Date().toISOString().split("T")[0],
                       description: "",
+                      description_ar: "",
                       credentialURL: "",
                       image: "",
                     });
@@ -255,6 +260,17 @@ export default function CertifacateManage() {
                     placeholder="Brief description of the certification..."
                     className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
                     required
+                  />
+                </div>
+                <div className="md:col-span-2 space-y-2">
+                  <label className="text-sm font-semibold text-gray-400">Description (Arabic)</label>
+                  <textarea
+                    name="description_ar"
+                    value={formData.description_ar}
+                    onChange={handleInputChange}
+                    placeholder="وصف مختصر للشهادة..."
+                    dir="rtl"
+                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
                   />
                 </div>
                 <button

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import StatusAlert from "./common/StatusAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,15 +12,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 
-const ContactInfoItem = ({ icon, label, value, href }) => (
-  <div className="flex items-start gap-4 p-4 rounded-2xl bg-card  hover:shadow-md transition-all duration-300 group">
+const ContactInfoItem = ({ icon, label, value, href, dir }) => (
+  <div dir={dir} className="flex items-start gap-4 p-4 rounded-2xl bg-card  hover:shadow-md transition-all duration-300 group">
     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
       <FontAwesomeIcon icon={icon} />
     </div>
-    <div className="flex flex-col text-left">
+    <div className="flex flex-col text-start" >
       <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</span>
       {href ? (
-        <a href={href} className="text-text font-semibold hover:text-primary transition-colors">
+        <a href={href} className="text-text font-semibold hover:text-primary transition-colors"  >
           {value}
         </a>
       ) : (
@@ -32,6 +33,7 @@ const ContactInfoItem = ({ icon, label, value, href }) => (
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const Contact = () => {
+  const { isArabic } = useLanguage();
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -63,7 +65,7 @@ const Contact = () => {
 
       if (!response.ok) throw new Error("Failed to send message. Please try again later.");
 
-      setStatus({ type: "success", message: "Message sent! I'll get back to you soon." });
+      setStatus({ type: "success", message: isArabic ? "تم إرسال الرسالة! سأعود إليك قريباً." : "Message sent! I'll get back to you soon." });
       setFormData({
         fname: "",
         lname: "",
@@ -83,18 +85,18 @@ const Contact = () => {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12 ml-4 md:ml-0 text-center md:text-left">
+        <div className="mb-12 ms-4 md:ms-0 text-center md:text-start">
           <h2
             className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center justify-center md:justify-start gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
             id="contact"
           >
-            Connect
+            {isArabic ? "تواصل" : "Connect"}
           </h2>
           <h3 className="text-4xl font-extrabold text-text leading-tight">
-            Get <span className="text-primary">In Touch</span>
+            {isArabic ? (<>تواصل <span className="text-primary">معي</span></>) : (<>Get <span className="text-primary">In Touch</span></>)}
           </h3>
           <p className="text-text mt-4 mx-auto md:mx-0 max-w-xl text-lg font-medium">
-            Have a project in mind or just want to say hi? Feel free to reach out.
+            {isArabic ? "هل لديك مشروع في ذهنك أو تريد فقط أن تلقي التحية؟ لا تتردد في التواصل." : "Have a project in mind or just want to say hi? Feel free to reach out."}
           </p>
         </div>
 
@@ -105,24 +107,25 @@ const Contact = () => {
           <div className="lg:col-span-4 space-y-4 order-2 lg:order-1">
             <ContactInfoItem 
               icon={faPhone} 
-              label="Phone" 
-              value="+972 568973379" 
+              dir={isArabic ? "rtl" : "ltr"}
+              label={isArabic ? "الهاتف" : "Phone"} 
+              value={isArabic ? "+972 568973379" : "+972 568973379"}
               href="tel:+972568973379" 
             />
             <ContactInfoItem 
               icon={faEnvelope} 
-              label="Email" 
+              label={isArabic ? "البريد الإلكتروني" : "Email"} 
               value="hasansaafen1234@gmail.com" 
               href="mailto:hasansaafen1234@gmail.com" 
             />
             <ContactInfoItem 
               icon={faLocationDot} 
-              label="Location" 
-              value="Hebron, Palestine" 
+              label={isArabic ? "الموقع" : "Location"} 
+              value={isArabic ? "الخليل، فلسطين" : "Hebron, Palestine"} 
             />
 
             <div className="p-8 rounded-3xl bg-primary text-white relative overflow-hidden shadow-xl mt-8">
-              <h3 className="text-xl font-bold mb-4 relative z-10">Social Profiles</h3>
+              <h3 className="text-xl font-bold mb-4 relative z-10">{isArabic ? "الملفات الاجتماعية" : "Social Profiles"}</h3>
               <div className="flex flex-col gap-4 relative z-10">
                 <a
                   href="https://linkedin.com/in/hasan-saafen-9ba5902b5"
@@ -141,8 +144,8 @@ const Contact = () => {
                   <span className="font-medium">HasanAlsaafen</span>
                 </a>
               </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mb-12 blur-xl"></div>
+              <div className="absolute top-0 inset-inline-end-0 w-32 h-32 bg-white/10 rounded-full -me-16 -mt-16 blur-2xl"></div>
+              <div className="absolute bottom-0 inset-inline-start-0 w-24 h-24 bg-white/5 rounded-full -ms-12 -mb-12 blur-xl"></div>
             </div>
           </div>
 
@@ -152,30 +155,30 @@ const Contact = () => {
               onSubmit={handleSubmit}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 ">
-                <div className="space-y-2 text-left">
+                <div className="space-y-2 text-start">
                   <label className="text-xs font-bold  uppercase tracking-wider" htmlFor="fname">
-                    First Name
+                    {isArabic ? "الاسم الأول" : "First Name"}
                   </label>
                   <input
                     type="text"
                     id="fname"
                     name="fname"
-                    placeholder="Hasan"
+                    placeholder={isArabic ? "حسن" : "Hasan"}
                     value={formData.fname}
                     onChange={handleChange}
                     className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                     required
                   />
                 </div>
-                <div className="space-y-2 text-left">
+                <div className="space-y-2 text-start">
                   <label className="text-xs font-bold uppercase tracking-wider" htmlFor="lname">
-                    Last Name
+                    {isArabic ? "الاسم الأخير" : "Last Name"}
                   </label>
                   <input
                     type="text"
                     id="lname"
                     name="lname"
-                    placeholder="Al-Saafin"
+                    placeholder={isArabic ? "السعافين" : "Al-Saafin"}
                     value={formData.lname}
                     onChange={handleChange}
                     className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
@@ -185,9 +188,9 @@ const Contact = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2 text-left">
+                <div className="space-y-2 text-start">
                   <label className="text-xs font-bold uppercase tracking-wider" htmlFor="email">
-                    Email Address
+                    {isArabic ? "البريد الإلكتروني" : "Email Address"}
                   </label>
                   <input
                     type="email"
@@ -200,9 +203,9 @@ const Contact = () => {
                     required
                   />
                 </div>
-                <div className="space-y-2 text-left">
+                <div className="space-y-2 text-start">
                   <label className="text-xs font-bold uppercase tracking-wider" htmlFor="phone">
-                    Phone Number
+                    {isArabic ? "رقم الهاتف" : "Phone Number"}
                   </label>
                   <input
                     type="tel"
@@ -217,11 +220,12 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="space-y-2 mb-6 text-left">
+              <div className="space-y-2 mb-6 text-start">
                 <label className="text-xs font-bold uppercase tracking-wider">
-                  Select Subject
+                  {isArabic ? "اختر الموضوع" : "Select Subject"}
                 </label>
                 <div className="flex flex-wrap gap-3">
+                  
                   {["General Inquiry", "Project Proposal", "Feedback"].map((option) => (
                     <label key={option} className="cursor-pointer">
                       <input
@@ -240,15 +244,15 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="space-y-2 mb-8 text-left">
+              <div className="space-y-2 mb-8 text-start">
                 <label className="text-xs font-bold uppercase tracking-wider" htmlFor="message">
-                  How can I help you?
+                  {isArabic ? "كيف يمكنني مساعدتك؟" : "How can I help you?"}
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={4}
-                  placeholder="Tell me about your project..."
+                  placeholder={isArabic ? "كيف يمكنني مساعدتك؟" : "How can I help you?"}
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
@@ -261,7 +265,7 @@ const Contact = () => {
                   disabled={loading}
                   className="w-full sm:w-auto bg-primary text-white font-bold py-4 px-10 rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:translate-y-0 transition-all flex items-center justify-center gap-3"
                 >
-                  {loading ? "Sending..." : "Send Message"}
+                  {loading ? (isArabic ? "جاري الإرسال..." : "Sending...") : (isArabic ? "إرسال الرسالة" : "Send Message")}
                   <FontAwesomeIcon icon={faPaperPlane} className="text-sm" />
                 </button>
               </div>

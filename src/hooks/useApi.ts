@@ -16,7 +16,7 @@ export const useApi = () => {
       headers,
     });
 
-    if (response.status === 403) {
+    if (response.status === 401) {
       try {
         const refreshRes = await fetch(`${URL}/auth/refresh`, {
           method: "POST",

@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useLanguage } from "../context/LanguageContext";
 
 const Footer = () => {
+  const { isArabic } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -11,12 +13,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           <div className="lg:col-span-5 space-y-6">
             <h2 className="text-2xl font-bold tracking-tighter text-primary">
-              HASAN<span className="text-gray-400 font-light ml-1">AL-SAAFIN</span>
+              HASAN<span className="text-gray-400 font-light ms-1">AL-SAAFIN</span>
             </h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-sm">
-              Focusing on high-performance web development and scalable 
-              digital solutions. Passionate about clean code, performance, 
-              and user-centric design.
+              {isArabic 
+                ? "أركز على تطوير الويب عالي الأداء والحلول الرقمية القابلة للتطوير. شغوف بالكود النظيف والأداء والتصميم المتمحور حول المستخدم." 
+                : "Focusing on high-performance web development and scalable digital solutions. Passionate about clean code, performance, and user-centric design."}
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -39,8 +41,8 @@ const Footer = () => {
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-text border-l-2 border-primary pl-3">
-              Get in Touch
+            <h3 className="text-sm font-bold uppercase tracking-widest text-text border-s-2 border-primary ps-3">
+              {isArabic ? "تواصل معي" : "Get in Touch"}
             </h3>
             <div className="space-y-4">
               <a
@@ -65,24 +67,29 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
                   <FontAwesomeIcon icon={faLocationDot} className="text-xs" />
                 </div>
-                Hebron, Palestine
+                {isArabic ? "الخليل، فلسطين" : "Hebron, Palestine"}
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-text border-l-2 border-primary pl-3">
-              Explore
+            <h3 className="text-sm font-bold uppercase tracking-widest text-text border-s-2 border-primary ps-3">
+              {isArabic ? "استكشف" : "Explore"}
             </h3>
             <ul className="space-y-3">
-              {["About", "Projects", "Certificates", "Contact"].map((link) => (
-                <li key={link}>
+              {[
+                { en: "About", ar: "حول", href: "about" },
+                { en: "Projects", ar: "المشاريع", href: "projects" },
+                { en: "Certificates", ar: "الشهادات", href: "certificates" },
+                { en: "Contact", ar: "تواصل", href: "contact" },
+              ].map((link) => (
+                <li key={link.href}>
                   <a
-                    href={`#${link.toLowerCase()}`}
+                    href={`#${link.href}`}
                     className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-slate-700 group-hover:bg-primary transition-colors" />
-                    {link}
+                    {isArabic ? link.ar : link.en}
                   </a>
                 </li>
               ))}
@@ -93,7 +100,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-gray-50 dark:border-slate-800 flex flex-col md:flex-row justify-center items-center gap-4 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
           <p>&copy; {currentYear} Hasan Al-Saafin</p>
           <div className="flex items-center gap-6">
-            <span>Built with Love 💗</span>
+            <span>{isArabic ? "بُني بحب 💗" : "Built with Love 💗"}</span>
         
           </div>
         </div>

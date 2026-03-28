@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark, faEnvelope, faPhone, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark, faEnvelope, faPhone, faSun, faMoon, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar({ isDarkMode, toggleDarkMode }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, toggleLanguage, isArabic } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,10 +18,10 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
-    { href: "#certificates", label: "Certificates" },
-    { href: "#contact", label: "Contact" },
+    { href: "#about", label: isArabic ? "حول" : "About" },
+    { href: "#projects", label: isArabic ? "المشاريع" : "Projects" },
+    { href: "#certificates", label: isArabic ? "الشهادات" : "Certificates" },
+    { href: "#contact", label: isArabic ? "تواصل" : "Contact" },
   ];
 
   const socialLinks = [
@@ -35,7 +37,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 inset-inline-start-0 w-full z-50 transition-all duration-300 ${
           scrolled 
             ? "py-4 bg-card backdrop-blur-lg shadow-lg border-b border-border" 
             : "py-6 bg-transparent"
@@ -44,7 +46,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <h1 className="text-2xl font-bold tracking-tighter text-primary">
-              <a href="#top">HASAN<span className="text-gray-400 font-light ml-1">AL-SAAFIN</span></a>
+              <a href="#top">HASAN<span className="text-gray-400 font-light ms-1">AL-SAAFIN</span></a>
             </h1>
           </div>
 
@@ -62,7 +64,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
             ))}
           </ul>
 
-          <div className="hidden lg:flex items-center gap-6 border-l border-border ml-8 pl-8">
+          <div className="hidden lg:flex items-center gap-6 border-s border-border ms-8 ps-8">
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
                 <a
@@ -92,14 +94,31 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
 
             <button
               onClick={toggleDarkMode}
-              className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm ml-2"
+              className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm ms-2"
               aria-label="Toggle theme"
             >
               <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className="text-sm" />
             </button>
+
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all shadow-sm text-xs font-bold ms-1"
+              aria-label="Toggle language"
+            >
+              <FontAwesomeIcon icon={faGlobe} className="text-sm" />
+              {isArabic ? "EN" : "AR"}
+            </button>
           </div>
 
-          <div className="flex items-center gap-4 lg:hidden">
+          <div className="flex items-center gap-3 lg:hidden">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all"
+              aria-label="Toggle language"
+            >
+              <FontAwesomeIcon icon={faGlobe} className="text-xs" />
+              {isArabic ? "EN" : "AR"}
+            </button>
             <button
               onClick={toggleDarkMode}
               className="text-xl text-primary focus:outline-none"
@@ -124,10 +143,10 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute top-0 right-0 h-full w-[280px] bg-white dark:bg-slate-900 shadow-2xl p-8 animate-slide-left flex flex-col justify-between">
+          <div className="absolute top-0 inset-inline-end-0 h-full w-[280px] bg-white dark:bg-slate-900 shadow-2xl p-8 animate-slide-in flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-center mb-12">
-                <h2 className="text-xl font-bold text-primary">Menu</h2>
+                <h2 className="text-xl font-bold text-primary">{isArabic ? "القائمة" : "Menu"}</h2>
                 <button 
                   onClick={() => setOpen(false)}
                   className="text-2xl text-gray-400 hover:text-primary transition-colors"
@@ -186,12 +205,19 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
       )}
 
       <style>{`
-        @keyframes slide-left {
+        @keyframes slide-in-ltr {
           from { transform: translateX(100%); }
           to { transform: translateX(0); }
         }
-        .animate-slide-left {
-          animation: slide-left 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        @keyframes slide-in-rtl {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
+        }
+        [dir="ltr"] .animate-slide-in {
+          animation: slide-in-ltr 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        [dir="rtl"] .animate-slide-in {
+          animation: slide-in-rtl 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
 
