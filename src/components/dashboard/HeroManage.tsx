@@ -63,6 +63,31 @@ export default function HeroManage() {
             setFormData(data);
           }
         }
+        if(response.status === 404){
+          
+          const res = await request(`${API_URL}/herosections`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              heading: '',
+              heading_ar: '',
+              subheading: '',
+              subheading_ar: '',
+              backgroundImage: '',
+              ctaText: '',
+              ctaText_ar: '',
+              cards: [],
+              CV: ''
+            })
+            
+          });
+          if(res.ok){
+            const data = await res.json();
+            if (data) {
+              setFormData(data);
+            }
+          }
+        }
       } catch (err: any) {
         console.error('Failed to fetch hero data', err);
         setError(err.message);
