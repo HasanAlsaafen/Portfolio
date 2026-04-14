@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import ProjectDetails from "./pages/ProjectDetails";
+import Maintenance from "./pages/Maintenance";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "./Routes/ProtectedRoutes";
 import { useState, createContext } from "react";
@@ -23,13 +24,17 @@ export default function App() {
     <LanguageProvider>
     <AccessTokenContext.Provider value={{accessToken, handleSetAccessToken}}>
     <Routes>
+      <Route path="/" element={<Maintenance />} />
+      <Route path="*" element={<Maintenance />} />
+      {/* 
       <Route path="/" element={<Main />} />
       <Route path="/project/:id" element={<ProjectDetails />} />
       <Route path="/login" element={<Login  />} />
       <Route path="/dashboard" element={<ProtectedRoutes  />}>
         <Route index element={<Dashboard />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} /> 
+      */}
     </Routes>
     </AccessTokenContext.Provider>
     </LanguageProvider>
