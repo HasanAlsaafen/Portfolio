@@ -27,7 +27,7 @@ interface HeroData {
 }
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-const HERO_ID = '69725fab64d15d80a13ea473';
+const HERO_ID = '69de22f911249887aa5dbdf2';
 
 import { useApi } from "../../hooks/useApi";
 
