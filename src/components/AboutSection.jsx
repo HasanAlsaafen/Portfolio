@@ -74,7 +74,7 @@ const AboutSection = () => {
   useEffect(() => {
     const fetchHero = async () => {
       try {
-        const response = await fetch(`${API_URL}/herosections/69725fab64d15d80a13ea473`);
+        const response = await fetch(`${API_URL}/herosections/69de22f911249887aa5dbdf2`);
         if (response.ok) {
           const data = await response.json();
           if (data) {
