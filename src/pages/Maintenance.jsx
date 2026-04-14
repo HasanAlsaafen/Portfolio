@@ -7,13 +7,13 @@ const Maintenance = () => {
     const content = {
         en: {
             title: "Under Maintenance",
-            message: "We're currently updating our website to provide you with a better experience. We'll be back shortly!",
+            message: "  I'm currently updating my website to provide you with a better experience. I'll be back shortly!",
             backLater: "Please check back later.",
             contact: "Contact me at: hasansaafen1234@gmail.com"
         },
         ar: {
             title: "قيد الصيانة",
-            message: "نحن نقوم حالياً بتحديث موقعنا لتزويدك بتجربة أفضل. سنعود قريباً!",
+            message: "  أنا أقوم حالياً بتحديث موقعي لتزويدك بتجربة أفضل. سأعود قريباً!",
             backLater: "يرجى التحقق مرة أخرى في وقت لاحق.",
             contact: "تواصل معي عبر: hasansaafen1234@gmail.com"
         }
@@ -24,7 +24,6 @@ const Maintenance = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-white p-4 font-sans">
             <div className="max-w-2xl w-full text-center space-y-8 animate-in fade-in zoom-in duration-700">
-          
 
                 <div className="space-y-4">
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
