@@ -27,10 +27,10 @@ export const useApi = () => {
           const data = await refreshRes.json();
           if (data.token) {
             handleSetAccessToken(data.token);
-            
+
             const retryHeaders = new Headers(options.headers || {});
             retryHeaders.set("Authorization", `Bearer ${data.token}`);
-            
+
             response = await fetch(endpoint, {
               ...options,
               headers: retryHeaders,
