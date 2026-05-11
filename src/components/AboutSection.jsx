@@ -50,7 +50,7 @@ const SkillBadge = ({ icon, label }) => (
 );
 
 const FALLBACK_HERO_DATA = {
-  heading: "A Full-Stack Front-End Developer\nBuilding Digital Excellence",
+  heading: "A Full-Stack Back-End Developer\nBuilding Digital Excellence",
   heading_ar: "مطور ويب شامل\nبناء التميز الرقمي",
   subheading: "I specialize in creating high-performance web applications with modern technologies. Focused on clean code and user experiences.",
   subheading_ar: "أتخصص في إنشاء تطبيقات ويب عالية الأداء باستخدام أحدث التقنيات. أركز على الكود النظيف وتجربة المستخدم.",
