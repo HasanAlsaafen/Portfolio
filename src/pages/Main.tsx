@@ -3,6 +3,7 @@ import Navbar from "../components/NavBar";
 import AboutSection from "../components/AboutSection";
 import Projects from "../components/Projects";
 import Certificates from "../components/Certificates";
+import OpenSource from "../components/OpenSource";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import ChatBot from "../components/ChatBot";
@@ -36,6 +37,7 @@ export default function Main()
          <main className="p-4 lg:p-8">
            <AboutSection />
            <Projects />
+           <OpenSource />
            <Certificates />
            <Contact />
          </main>

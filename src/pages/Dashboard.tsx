@@ -5,6 +5,7 @@ import { ProjectManage } from "../components/dashboard/ProjectManage";
 import CertifacateManage from "../components/dashboard/CertifacteManage";
 import MessageManage from "../components/dashboard/MessageManage";
 import ColorManage from "../components/dashboard/ColorManage";
+import { OpenSourceManage } from "../components/dashboard/OpenSourceManage";
 import { useState, useEffect } from "react";
 import { useApi } from "../hooks/useApi";
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
@@ -49,6 +50,7 @@ export default function Dashboard() {
         {selectedItem === "Main" && <HeroManage />}
         {selectedItem === "Projects" && <ProjectManage />}
         {selectedItem === "Certificates" && <CertifacateManage />}
+        {selectedItem === "Open Source" && <OpenSourceManage />}
         {selectedItem === "Colors" && <ColorManage />}
         {selectedItem === "Messages" && <MessageManage onMessageUpdate={checkNotifications} />}
       </div>
