@@ -119,10 +119,10 @@ const AboutSection = () => {
               className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
               id="about-heading"
             >
-              {isArabic ? "مطور واجهات أمامية شامل" : "Full-Stack front-end developer"}
+              {isArabic ?  "مطور شامل مختص في الباك اند" : "Full-Stack & Back-end developer"}
             </h2>
             <h3 className="text-4xl lg:text-5xl font-extrabold text-text leading-[1.1] mb-6 whitespace-pre-line">
-              {isArabic ? (displayData.heading_ar || displayData.heading) : displayData.heading}
+              {isArabic ? "مطور شامل مختص في الباك اند" : "Full-Stack & Back-end developer"}
             </h3>
             <p className="text-lg text-text leading-relaxed font-medium max-w-2xl whitespace-pre-line">
               {isArabic ? (displayData.subheading_ar || displayData.subheading) : displayData.subheading}
