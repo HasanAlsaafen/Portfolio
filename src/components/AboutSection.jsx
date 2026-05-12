@@ -122,7 +122,7 @@ const AboutSection = () => {
               {isArabic ?  "مطور شامل مختص في الباك اند" : "Full-Stack & Back-end developer"}
             </h2>
             <h3 className="text-4xl lg:text-5xl font-extrabold text-text leading-[1.1] mb-6 whitespace-pre-line">
-              {isArabic ? "مطور شامل مختص في الباك اند" : "Full-Stack & Back-end developer"}
+              {isArabic ? "   حسن السعافين  " : "Hasan Al-Saafin"}
             </h3>
             <p className="text-lg text-text leading-relaxed font-medium max-w-2xl whitespace-pre-line">
               {isArabic ? (displayData.subheading_ar || displayData.subheading) : displayData.subheading}
