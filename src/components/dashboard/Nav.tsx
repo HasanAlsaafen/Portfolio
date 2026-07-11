@@ -40,18 +40,18 @@ export default function Nav({ onBellClick, hasNotifications }: NavProps) {
       <div className="flex items-center space-x-4">
         <button
           onClick={onBellClick}
-          className="p-2 w-10 h-10 rounded-full bg-secondary text-gray-400 hover:text-primary transition-all relative"
+          className="p-2 w-10 h-10 border border-border text-gray-400 hover:text-primary hover:border-primary transition-colors relative"
           aria-label="Notifications"
         >
           <FontAwesomeIcon icon={faBell} />
           {hasNotifications && (
-            <span className="absolute top-2 right-2.5 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-card animate-pulse"></span>
+            <span className="absolute top-2 right-2.5 block h-2 w-2 rounded-full bg-error ring-2 ring-card animate-pulse"></span>
           )}
         </button>
 
         <button
           onClick={toggleDarkMode}
-          className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-gray-400 hover:text-primary transition-all"
+          className="w-10 h-10 border border-border flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors"
           aria-label="Toggle theme"
         >
           <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
@@ -62,7 +62,7 @@ export default function Nav({ onBellClick, hasNotifications }: NavProps) {
             <p className="text-sm font-bold text-text">Hasan Al-Saafin</p>
             <p className="text-xs text-gray-500 font-medium">Administrator</p>
           </div>
-          <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-primary to-blue-400 flex items-center justify-center text-white font-bold ring-2 ring-border shadow-sm">
+          <div className="h-10 w-10 bg-primary flex items-center justify-center text-white font-bold border border-border">
             HA
           </div>
         </div>

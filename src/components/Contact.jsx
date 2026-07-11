@@ -13,8 +13,8 @@ import {
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const ContactInfoItem = ({ icon, label, value, href, dir }) => (
-  <div dir={dir} className="flex items-start gap-4 p-4 rounded-2xl bg-card  hover:shadow-md transition-all duration-300 group">
-    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
+  <div dir={dir} className="flex items-start gap-4 p-4 border border-border bg-card hover:border-primary transition-colors duration-150 group">
+    <div className="w-12 h-12 border border-primary/20 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
       <FontAwesomeIcon icon={icon} />
     </div>
     <div className="flex flex-col text-start" >
@@ -87,7 +87,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 ms-4 md:ms-0 text-center md:text-start">
           <h2
-            className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center justify-center md:justify-start gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
+            className="text-primary text-xs font-bold uppercase tracking-wide mb-4 flex items-center justify-center md:justify-start gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
             id="contact"
           >
             {isArabic ? "تواصل" : "Connect"}
@@ -124,9 +124,9 @@ const Contact = () => {
               value={isArabic ? "الخليل، فلسطين" : "Hebron, Palestine"} 
             />
 
-            <div className="p-8 rounded-3xl bg-primary text-white relative overflow-hidden shadow-xl mt-8">
-              <h3 className="text-xl font-bold mb-4 relative z-10">{isArabic ? "الملفات الاجتماعية" : "Social Profiles"}</h3>
-              <div className="flex flex-col gap-4 relative z-10">
+            <div className="p-8 bg-primary text-white mt-8">
+              <h3 className="text-xl font-bold mb-4">{isArabic ? "الملفات الاجتماعية" : "Social Profiles"}</h3>
+              <div className="flex flex-col gap-4">
                 <a
                   href="https://linkedin.com/in/hasan-saafen-9ba5902b5"
                   target="_blank"
@@ -144,14 +144,12 @@ const Contact = () => {
                   <span className="font-medium">HasanAlsaafen</span>
                 </a>
               </div>
-              <div className="absolute top-0 inset-inline-end-0 w-32 h-32 bg-white/10 rounded-full -me-16 -mt-16 blur-2xl"></div>
-              <div className="absolute bottom-0 inset-inline-start-0 w-24 h-24 bg-white/5 rounded-full -ms-12 -mb-12 blur-xl"></div>
             </div>
           </div>
 
           <div className="lg:col-span-8 order-1 lg:order-2">
             <form
-              className="bg-card p-8 md:p-12 rounded-3xl shadow-2xl border border-border text-text"
+              className="bg-card p-8 md:p-12 border border-border text-text"
               onSubmit={handleSubmit}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 ">
@@ -166,7 +164,7 @@ const Contact = () => {
                     placeholder={isArabic ? "حسن" : "Hasan"}
                     value={formData.fname}
                     onChange={handleChange}
-                    className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full bg-card border border-border p-4 text-sm focus:outline focus:outline-2 focus:outline-primary focus:border-primary transition-colors outline-none"
                     required
                   />
                 </div>
@@ -181,7 +179,7 @@ const Contact = () => {
                     placeholder={isArabic ? "السعافين" : "Al-Saafin"}
                     value={formData.lname}
                     onChange={handleChange}
-                    className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full bg-card border border-border p-4 text-sm focus:outline focus:outline-2 focus:outline-primary focus:border-primary transition-colors outline-none"
                     required
                   />
                 </div>
@@ -199,7 +197,7 @@ const Contact = () => {
                     placeholder="example@gmail.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full bg-card border border-border p-4 text-sm focus:outline focus:outline-2 focus:outline-primary focus:border-primary transition-colors outline-none"
                     required
                   />
                 </div>
@@ -214,7 +212,7 @@ const Contact = () => {
                     placeholder="+972 ..."
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                    className="w-full bg-card border border-border p-4 text-sm focus:outline focus:outline-2 focus:outline-primary focus:border-primary transition-colors outline-none"
                     required
                   />
                 </div>
@@ -236,7 +234,7 @@ const Contact = () => {
                         onChange={handleChange}
                         className="sr-only peer"
                       />
-                      <div className="px-4 py-2 bg-secondary/10 rounded-lg text-xs font-semibold text-gray-500 dark:text-gray-400 peer-checked:bg-primary peer-checked:text-white transition-all border border-transparent hover:border-gray-200 dark:hover:border-slate-700">
+                      <div className="px-4 py-2 bg-card text-xs font-semibold text-gray-500 dark:text-gray-400 peer-checked:bg-primary peer-checked:text-white transition-colors border border-border peer-checked:border-primary">
                         {option}
                       </div>
                     </label>
@@ -255,7 +253,7 @@ const Contact = () => {
                   placeholder={isArabic ? "كيف يمكنني مساعدتك؟" : "How can I help you?"}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-secondary/10 border-0 rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
+                  className="w-full bg-card border border-border p-4 text-sm focus:outline focus:outline-2 focus:outline-primary focus:border-primary transition-colors outline-none resize-none"
                   required
                 />
               </div>
@@ -263,7 +261,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:w-auto bg-primary text-white font-bold py-4 px-10 rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:translate-y-0 transition-all flex items-center justify-center gap-3"
+                  className="w-full sm:w-auto bg-primary text-white font-semibold py-4 px-10 hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)] disabled:opacity-50 transition-colors duration-150 flex items-center justify-center gap-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   {loading ? (isArabic ? "جاري الإرسال..." : "Sending...") : (isArabic ? "إرسال الرسالة" : "Send Message")}
                   <FontAwesomeIcon icon={faPaperPlane} className="text-sm" />

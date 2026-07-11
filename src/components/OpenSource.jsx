@@ -18,7 +18,7 @@ const OpenSourceCard = ({ item, techColors, isArabic }) => {
   };
 
   return (
-    <article className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-border flex flex-col">
+    <article className="group bg-card overflow-hidden border border-border hover:border-primary transition-colors duration-150 flex flex-col">
       <div className="p-6 flex flex-col h-full">
         <div className="flex justify-between items-start mb-4">
           <h3 className="text-xl font-bold text-text group-hover:text-primary transition-colors inline-block flex-1">
@@ -58,7 +58,7 @@ const OpenSourceCard = ({ item, techColors, isArabic }) => {
               href={item.prUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-xl py-2.5 px-4 text-sm font-bold transition-colors"
+              className="flex-1 inline-flex items-center justify-center gap-2 border border-border text-primary hover:bg-primary hover:text-white hover:border-primary py-2.5 px-4 text-sm font-semibold transition-colors"
             >
               <FontAwesomeIcon icon={faCodePullRequest} /> {isArabic ? "طلب السحب" : "View PR"}
             </a>
@@ -67,7 +67,7 @@ const OpenSourceCard = ({ item, techColors, isArabic }) => {
             href={item.repoUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 bg-black dark:bg-slate-700 text-white rounded-xl py-2.5 px-4 text-sm font-bold hover:opacity-90 transition-opacity"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-black dark:bg-slate-700 text-white py-2.5 px-4 text-sm font-semibold hover:bg-primary transition-colors"
           >
             <FontAwesomeIcon icon={faGithub} /> {isArabic ? "المستودع" : "Repository"}
           </a>
@@ -169,7 +169,7 @@ const OpenSource = () => {
     <>
       <div className="mb-12 ms-4 md:ms-24 ">
         <h2
-          className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
+          className="text-primary text-xs font-bold uppercase tracking-wide mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
           id="opensource"
         >
           {isArabic ? "مساهمات في المجتمع" : "Community Contributions"}
@@ -199,7 +199,7 @@ const OpenSource = () => {
             <OpenSourceCard key={item._id || item.id} item={item} techColors={techColors} isArabic={isArabic} />
           ))
         ) : (
-          <div className="col-span-full text-center py-20 text-gray-500 bg-secondary/10 rounded-3xl border border-dashed border-border/50">
+          <div className="col-span-full text-center py-20 text-gray-500 bg-secondary/10 border border-dashed border-border">
             <p className="font-bold text-lg mb-2">{isArabic ? "لا توجد مساهمات" : "No Contributions Found"}</p>
           </div>
         )}
@@ -213,7 +213,7 @@ const OpenSource = () => {
                 setPage((p) => Math.max(1, p - 1));
               }}
               disabled={page === 1 || loading}
-              className="w-12 h-12 rounded-full border-2 border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed group"
+              className="w-12 h-12 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed group"
               title="Previous Page"
             >
               <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform rtl:rotate-180" />
@@ -230,7 +230,7 @@ const OpenSource = () => {
                 document.getElementById('opensource')?.scrollIntoView({ behavior: 'smooth' });
               }}
               disabled={items.length < limit || loading}
-              className="w-12 h-12 rounded-full border-2 border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed group"
+              className="w-12 h-12 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed group"
               title="Next Page"
             >
               <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform rtl:rotate-180" />

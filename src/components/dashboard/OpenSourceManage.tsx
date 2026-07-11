@@ -207,7 +207,7 @@ export const OpenSourceManage = () => {
                     setTech([]);
                   }
                 }}
-                className="p-4 shadow-xl rounded-2xl bg-primary border-shadow text-white font-bold hover:-translate-y-0.5 shadow-primary/25 hover:shadow-primary/40 transition-all flex items-center gap-2"
+                className="p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center gap-2"
               >
                 <FontAwesomeIcon icon={showForm ? faXmark : faPlus} />
                 {showForm ? "Cancel" : "Add Contribution"}
@@ -224,7 +224,7 @@ export const OpenSourceManage = () => {
           )}
 
           {showForm && (
-            <article className="p-4 md:p-8 bg-card shadow-2xl rounded-2xl border border-border animate-in fade-in slide-in-from-top-4 duration-300">
+            <article className="p-4 md:p-8 bg-card border border-border animate-in fade-in slide-in-from-top-4 duration-300">
               <h2 className="text-2xl font-bold mb-6">
                 {editingItem ? "Edit Contribution" : "Add Contribution"}
               </h2>
@@ -242,7 +242,7 @@ export const OpenSourceManage = () => {
                     value={formData.title}
                     onChange={handleInputChange}
                     placeholder="e.g. Added dark mode feature"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -257,7 +257,7 @@ export const OpenSourceManage = () => {
                     onChange={handleInputChange}
                     placeholder="العنوان بالعربية"
                     dir="rtl"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -270,7 +270,7 @@ export const OpenSourceManage = () => {
                     value={formData.repoUrl}
                     onChange={handleInputChange}
                     placeholder="https://github.com/..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -284,7 +284,7 @@ export const OpenSourceManage = () => {
                     value={formData.prUrl}
                     onChange={handleInputChange}
                     placeholder="https://github.com/.../pull/..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -295,7 +295,7 @@ export const OpenSourceManage = () => {
                     name="status"
                     value={formData.status}
                     onChange={handleInputChange}
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   >
                     <option value="Open">Open</option>
                     <option value="Merged">Merged</option>
@@ -311,7 +311,7 @@ export const OpenSourceManage = () => {
                     value={formData.description}
                     onChange={handleInputChange}
                     placeholder="Contribution description..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors h-32 resize-none"
                     required
                   />
                 </div>
@@ -325,25 +325,25 @@ export const OpenSourceManage = () => {
                     onChange={handleInputChange}
                     placeholder="وصف المساهمة..."
                     dir="rtl"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors h-32 resize-none"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">
                   <label className="text-sm font-semibold text-gray-400">
                     Technologies
                   </label>
-                  <div className="flex flex-wrap gap-2 mb-2 min-h-[40px] p-2 rounded-xl bg-secondary/10 border border-dashed border-border">
+                  <div className="flex flex-wrap gap-2 mb-2 min-h-[40px] p-2 bg-secondary/10 border border-dashed border-border">
                     {tech.map((t) => (
                       <span
                         key={t}
-                        className="flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium shadow-sm transition-all"
+                        className="flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium transition-colors"
                         style={getTechStyle(t)}
                       >
                         {t}
                         <button
                           type="button"
                           onClick={() => handleRemoveTech(t)}
-                          className="hover:scale-125 transition-transform"
+                          className="hover:opacity-70 transition-opacity"
                         >
                           <FontAwesomeIcon icon={faXmark} />
                         </button>
@@ -357,7 +357,7 @@ export const OpenSourceManage = () => {
                   </div>
                   <select
                     onChange={handleAddTech}
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   >
                     <option value="">Add a technology...</option>
                     {dynamicTechColors.map((c) => (
@@ -369,7 +369,7 @@ export const OpenSourceManage = () => {
                 </div>
                 <button
                   type="submit"
-                  className="md:col-span-2 p-4 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
+                  className="md:col-span-2 p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center justify-center gap-2"
                 >
                   <FontAwesomeIcon icon={faCheck} />
                   {editingItem ? "Update Contribution" : "Add Contribution"}
@@ -396,7 +396,7 @@ export const OpenSourceManage = () => {
                 />
               </div>
             ) : items.length === 0 ? (
-              <div className="text-center py-20 bg-secondary/10 rounded-2xl border border-dashed border-border flex flex-col items-center">
+              <div className="text-center py-20 bg-secondary/10 border border-dashed border-border flex flex-col items-center">
                 <p className="text-gray-500 font-medium mb-4">
                   No contributions found on this page.
                 </p>
@@ -414,7 +414,7 @@ export const OpenSourceManage = () => {
                 {items.map((item) => (
                   <article
                     key={item._id || item.id}
-                    className="group relative bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl transition-all duration-300 flex flex-col"
+                    className="group relative bg-card overflow-hidden border border-border transition-colors duration-300 flex flex-col"
                   >
                     <div className="p-5 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-2">
@@ -436,7 +436,7 @@ export const OpenSourceManage = () => {
                         {item.technologies.slice(0, 3).map((t, i) => (
                           <span
                             key={i}
-                            className="px-2 py-0.5 rounded-full text-[10px] font-medium shadow-sm transition-all"
+                            className="px-2 py-0.5 rounded-full text-[10px] font-medium transition-colors"
                             style={getTechStyle(t)}
                           >
                             {t}
@@ -453,20 +453,20 @@ export const OpenSourceManage = () => {
                           href={item.prUrl || item.repoUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="flex-1 py-2 rounded-lg bg-primary text-white text-xs font-bold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                          className="flex-1 py-2 bg-primary text-white text-xs font-bold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
                         >
                           <FontAwesomeIcon icon={faCodeBranch} /> View
                         </a>
                         <button
                           onClick={() => handleEdit(item)}
-                          className="w-10 h-10 rounded-lg bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-colors"
+                          className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-colors"
                           title="Edit"
                         >
                           <FontAwesomeIcon icon={faEdit} />
                         </button>
                         <button
                           onClick={() => setShowDeleteModal(item._id || item.id || null)}
-                          className="w-10 h-10 rounded-lg bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors"
+                          className="w-10 h-10 bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-colors"
                           title="Delete"
                         >
                           <FontAwesomeIcon icon={faTrash} />
@@ -484,11 +484,11 @@ export const OpenSourceManage = () => {
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1 || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
                     <FontAwesomeIcon
                       icon={faChevronLeft}
-                      className="group-hover:-translate-x-0.5 transition-transform"
+                      className="group-hover:-translate-x-0.5"
                     />
                   </button>
                   <div className="flex items-center gap-2">
@@ -502,11 +502,11 @@ export const OpenSourceManage = () => {
                   <button
                     onClick={() => setPage((p) => p + 1)}
                     disabled={items.length < limit || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
                     <FontAwesomeIcon
                       icon={faChevronRight}
-                      className="group-hover:translate-x-0.5 transition-transform"
+                      className="group-hover:translate-x-0.5"
                     />
                   </button>
                 </div>
@@ -519,7 +519,7 @@ export const OpenSourceManage = () => {
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-card w-full max-w-md p-6 rounded-2xl shadow-2xl border border-border animate-in zoom-in-95 duration-200">
+          <div className="bg-card w-full max-w-md p-6 border border-border animate-in zoom-in-95 duration-200">
             <h3 className="text-xl font-bold mb-2">Delete Contribution?</h3>
             <p className="text-gray-500 mb-6">
               Are you sure you want to delete this contribution? This action cannot
@@ -528,13 +528,13 @@ export const OpenSourceManage = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteModal(null)}
-                className="flex-1 p-3 rounded-xl bg-secondary/50 font-bold hover:bg-secondary transition-colors"
+                className="flex-1 p-3 bg-secondary/50 font-bold hover:bg-secondary transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={() => showDeleteModal && handleDelete(showDeleteModal)}
-                className="flex-1 p-3 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
+                className="flex-1 p-3 bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
               >
                 Delete
               </button>

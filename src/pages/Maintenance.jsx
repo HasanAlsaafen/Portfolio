@@ -22,32 +22,28 @@ const Maintenance = () => {
     const currentContent = isArabic ? content.ar : content.en;
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-white p-4 font-sans">
-            <div className="max-w-2xl w-full text-center space-y-8 animate-in fade-in zoom-in duration-700">
+        <div className="min-h-screen flex items-center justify-center bg-[#161616] text-[#f4f4f4] p-4 font-sans">
+            <div className="max-w-2xl w-full text-center space-y-8 animate-in fade-in duration-500">
 
                 <div className="space-y-4">
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#4589ff]">
                         {currentContent.title}
                     </h1>
                     <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto leading-relaxed">
                         {currentContent.message}
                     </p>
-                    <p className="text-blue-400 font-medium">
+                    <p className="text-[#4589ff] font-medium">
                         {currentContent.backLater}
                     </p>
                 </div>
 
                 <div className="pt-8">
-                    <div className="inline-block px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div className="inline-block px-6 py-3 bg-[#262626] border border-[#393939]">
                          <p className="text-gray-300 text-sm">
                             {currentContent.contact}
                         </p>
                     </div>
                 </div>
-
-                {/* Aesthetic background glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] -z-10"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[100px] -z-10"></div>
             </div>
         </div>
     );

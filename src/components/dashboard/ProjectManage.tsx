@@ -203,7 +203,7 @@ export const ProjectManage = () => {
                     setTech([]);
                   }
                 }}
-                className="p-4 shadow-xl rounded-2xl bg-primary border-shadow text-white font-bold hover:-translate-y-0.5 shadow-primary/25 hover:shadow-primary/40 transition-all flex items-center gap-2"
+                className="p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center gap-2"
               >
                 <FontAwesomeIcon icon={showForm ? faXmark : faPlus} />
                 {showForm ? "Cancel" : "Create New Project"}
@@ -220,7 +220,7 @@ export const ProjectManage = () => {
           )}
 
           {showForm && (
-            <article className="p-4 md:p-8 bg-card shadow-2xl rounded-2xl border border-border animate-in fade-in slide-in-from-top-4 duration-300">
+            <article className="p-4 md:p-8 bg-card border border-border animate-in fade-in slide-in-from-top-4 duration-300">
               <h2 className="text-2xl font-bold mb-6">
                 {editingProject ? "Edit Project" : "Create New Project"}
               </h2>
@@ -238,7 +238,7 @@ export const ProjectManage = () => {
                     value={formData.title}
                     onChange={handleInputChange}
                     placeholder="Project title"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -253,7 +253,7 @@ export const ProjectManage = () => {
                     onChange={handleInputChange}
                     placeholder="عنوان المشروع"
                     dir="rtl"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -266,7 +266,7 @@ export const ProjectManage = () => {
                     value={formData.projectUrl}
                     onChange={handleInputChange}
                     placeholder="https://..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -280,7 +280,7 @@ export const ProjectManage = () => {
                     value={formData.imageUrl}
                     onChange={handleInputChange}
                     placeholder="https://..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -293,7 +293,7 @@ export const ProjectManage = () => {
                     value={formData.description}
                     onChange={handleInputChange}
                     placeholder="Project description..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors h-32 resize-none"
                     required
                   />
                 </div>
@@ -307,25 +307,25 @@ export const ProjectManage = () => {
                     onChange={handleInputChange}
                     placeholder="وصف المشروع..."
                     dir="rtl"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors h-32 resize-none"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-4">
                   <label className="text-sm font-semibold text-gray-400">
                     Technologies
                   </label>
-                  <div className="flex flex-wrap gap-2 mb-2 min-h-[40px] p-2 rounded-xl bg-secondary/10 border border-dashed border-border">
+                  <div className="flex flex-wrap gap-2 mb-2 min-h-[40px] p-2 bg-secondary/10 border border-dashed border-border">
                     {tech.map((t) => (
                       <span
                         key={t}
-                        className="flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium shadow-sm transition-all"
+                        className="flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium transition-colors"
                         style={getTechStyle(t)}
                       >
                         {t}
                         <button
                           type="button"
                           onClick={() => handleRemoveTech(t)}
-                          className="hover:scale-125 transition-transform"
+                          className="hover:opacity-70 transition-opacity"
                         >
                           <FontAwesomeIcon icon={faXmark} />
                         </button>
@@ -339,7 +339,7 @@ export const ProjectManage = () => {
                   </div>
                   <select
                     onChange={handleAddTech}
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   >
                     <option value="">Add a technology...</option>
                     {dynamicTechColors.map((c) => (
@@ -354,7 +354,7 @@ export const ProjectManage = () => {
                 </div>
                 <button
                   type="submit"
-                  className="md:col-span-2 p-4 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
+                  className="md:col-span-2 p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center justify-center gap-2"
                 >
                   <FontAwesomeIcon icon={faCheck} />
                   {editingProject ? "Update Project" : "Create Project"}
@@ -381,7 +381,7 @@ export const ProjectManage = () => {
                 />
               </div>
             ) : projects.length === 0 ? (
-              <div className="text-center py-20 bg-secondary/10 rounded-2xl border border-dashed border-border flex flex-col items-center">
+              <div className="text-center py-20 bg-secondary/10 border border-dashed border-border flex flex-col items-center">
                 <p className="text-gray-500 font-medium mb-4">
                   No projects found on this page.
                 </p>
@@ -399,7 +399,7 @@ export const ProjectManage = () => {
                 {projects.map((project) => (
                   <article
                     key={project._id || project.id}
-                    className="group relative bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl transition-all duration-300"
+                    className="group relative bg-card overflow-hidden border border-border transition-colors duration-300"
                   >
                     <div className="relative overflow-hidden aspect-video">
                       <img
@@ -410,7 +410,7 @@ export const ProjectManage = () => {
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                         <button
                           onClick={() => handleEdit(project)}
-                          className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                          className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                           title="Edit"
                         >
                           <FontAwesomeIcon icon={faEdit} />
@@ -421,7 +421,7 @@ export const ProjectManage = () => {
                               project._id || project.id || null,
                             )
                           }
-                          className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                          className="w-10 h-10 bg-red-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                           title="Delete"
                         >
                           <FontAwesomeIcon icon={faTrash} />
@@ -439,7 +439,7 @@ export const ProjectManage = () => {
                         {project.technologies.slice(0, 3).map((t, i) => (
                           <span
                             key={i}
-                            className="px-2 py-0.5 rounded-full text-[10px] font-medium shadow-sm transition-all"
+                            className="px-2 py-0.5 rounded-full text-[10px] font-medium transition-colors"
                             style={getTechStyle(t)}
                           >
                             {t}
@@ -456,7 +456,7 @@ export const ProjectManage = () => {
                           href={project.projectUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="w-full py-2 rounded-lg bg-primary text-white text-xs font-bold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                          className="w-full py-2 bg-primary text-white text-xs font-bold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
                         >
                           <FontAwesomeIcon icon={faArrowRight} /> Visit Project
                         </a>
@@ -473,11 +473,11 @@ export const ProjectManage = () => {
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1 || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
                     <FontAwesomeIcon
                       icon={faChevronLeft}
-                      className="group-hover:-translate-x-0.5 transition-transform"
+                      className="group-hover:-translate-x-0.5"
                     />
                   </button>
                   <div className="flex items-center gap-2">
@@ -491,11 +491,11 @@ export const ProjectManage = () => {
                   <button
                     onClick={() => setPage((p) => p + 1)}
                     disabled={projects.length < limit || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
                     <FontAwesomeIcon
                       icon={faChevronRight}
-                      className="group-hover:translate-x-0.5 transition-transform"
+                      className="group-hover:translate-x-0.5"
                     />
                   </button>
                 </div>
@@ -508,7 +508,7 @@ export const ProjectManage = () => {
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-card w-full max-w-md p-6 rounded-2xl shadow-2xl border border-border animate-in zoom-in-95 duration-200">
+          <div className="bg-card w-full max-w-md p-6 border border-border animate-in zoom-in-95 duration-200">
             <h3 className="text-xl font-bold mb-2">Delete Project?</h3>
             <p className="text-gray-500 mb-6">
               Are you sure you want to delete this project? This action cannot
@@ -517,13 +517,13 @@ export const ProjectManage = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteModal(null)}
-                className="flex-1 p-3 rounded-xl bg-secondary/50 font-bold hover:bg-secondary transition-colors"
+                className="flex-1 p-3 bg-secondary/50 font-bold hover:bg-secondary transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={() => showDeleteModal && handleDelete(showDeleteModal)}
-                className="flex-1 p-3 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
+                className="flex-1 p-3 bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
               >
                 Delete
               </button>

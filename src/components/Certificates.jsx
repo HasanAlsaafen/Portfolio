@@ -12,12 +12,12 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const CertificateCard = ({ certificate, isArabic }) => {
   return (
-    <article className="group bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col md:flex-row max-w-2xl w-full">
+    <article className="group bg-card border border-border overflow-hidden hover:border-primary transition-colors duration-150 flex flex-col md:flex-row max-w-2xl w-full">
       <div className="relative w-full md:w-1/3 h-48 md:h-auto overflow-hidden bg-gray-50 dark:bg-slate-900 flex items-center justify-center p-4">
         <img
           src={certificate.image}
           alt={certificate.title}
-          className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-sm shadow-sm"
+          className="max-h-full max-w-full object-contain"
         />
         <div className="absolute top-2 start-2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
           <FontAwesomeIcon icon={faCheckCircle} /> {isArabic ? "موثقة" : "VERIFIED"}
@@ -92,7 +92,7 @@ const Certificates = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
           <div className="ms-4 md:ms-0">
             <h2
-              className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
+              className="text-primary text-xs font-bold uppercase tracking-wide mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
               id="certificates"
             >
               {isArabic ? "الاعتمادات" : "Accreditations"}
@@ -109,7 +109,7 @@ const Certificates = () => {
             href="https://linkedin.com/in/hasan-saafen-9ba5902b5"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-[#0a66c2] hover:bg-[#004182] text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 shadow-sm self-center md:self-end"
+            className="inline-flex items-center gap-2 bg-[#0a66c2] hover:bg-[#004182] text-white font-semibold py-3 px-6 transition-colors duration-150 self-center md:self-end"
           >
             <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
             <span className="hidden sm:inline">{isArabic ? "تواصل على LinkedIn" : "Connect on LinkedIn"}</span>
@@ -122,12 +122,12 @@ const Certificates = () => {
             <p className="text-gray-500 font-medium">{isArabic ? "جاري تحميل الشهادات..." : "Loading certificates..."}</p>
           </div>
         ) : error ? (
-          <div className="text-center py-20 text-red-500 bg-red-500/10 rounded-2xl border border-red-500/20">
+          <div className="text-center py-20 text-error bg-error/10 border border-error/20">
             <p className="font-bold mb-2">{isArabic ? "خطأ في تحميل الشهادات" : "Error loading certificates"}</p>
             <p>{error}</p>
           </div>
         ) : certificates.length === 0 ? (
-          <div className="text-center py-20 bg-secondary/10 rounded-2xl border border-dashed border-border flex flex-col items-center">
+          <div className="text-center py-20 bg-secondary/10 border border-dashed border-border flex flex-col items-center">
             <p className="text-gray-500 font-medium mb-4">{isArabic ? "لا توجد شهادات." : "No certificates found."}</p>
           </div>
         ) : (
@@ -146,7 +146,7 @@ const Certificates = () => {
                 <button
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page === 1 || loading}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                  className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                 >
                   <FontAwesomeIcon
                     icon={faChevronLeft}
@@ -164,7 +164,7 @@ const Certificates = () => {
                 <button
                   onClick={() => setPage((p) => p + 1)}
                   disabled={certificates.length < limit || loading}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                  className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                 >
                   <FontAwesomeIcon
                     icon={faChevronRight}

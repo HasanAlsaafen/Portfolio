@@ -58,9 +58,9 @@ export default function SideBar({
                 <p className="text-sm text-gray-500 truncate">@Hasan Al-Saafin</p>
               </div>
             )}
-            <button 
+            <button
               onClick={toggleSidebar}
-              className={`p-2 rounded-lg hover:bg-secondary text-gray-400 hover:text-primary transition-colors ${!isOpen && "mt-2"}`}
+              className={`p-2 hover:bg-secondary text-gray-400 hover:text-primary transition-colors ${!isOpen && "mt-2"}`}
             >
               <FontAwesomeIcon icon={isOpen ? faChevronLeft : faChevronRight} />
             </button>
@@ -71,15 +71,15 @@ export default function SideBar({
               <button
                 key={item.name}
                 onClick={() => setSelectedItem(item.name)}
-                className={`w-full flex items-center p-3 rounded-xl transition-all group ${
-                  selectedItem === item.name 
-                    ? "bg-primary/10 text-primary shadow-sm" 
-                    : "text-gray-500 hover:bg-secondary hover:text-primary"
+                className={`w-full flex items-center p-3 border-l-[3px] transition-colors group ${
+                  selectedItem === item.name
+                    ? "bg-primary/10 text-primary border-primary"
+                    : "text-gray-500 border-transparent hover:bg-secondary hover:text-primary"
                 } ${isOpen ? "space-x-3" : "justify-center"}`}
               >
-                <FontAwesomeIcon 
-                  icon={item.icon} 
-                  className={`text-lg transition-transform group-hover:scale-110 ${isOpen ? "" : "m-1"}`} 
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className={`text-lg ${isOpen ? "" : "m-1"}`}
                 />
                 {isOpen && <span className="font-medium">{item.name}</span>}
               </button>
@@ -89,13 +89,13 @@ export default function SideBar({
           <div className="mt-auto pt-4 border-t border-border">
             <button
               onClick={handleLogout}
-              className={`w-full flex items-center p-3 rounded-xl transition-all text-red-500 hover:bg-red-500/10 group ${
+              className={`w-full flex items-center p-3 transition-colors text-error hover:bg-error/10 ${
                 isOpen ? "space-x-3" : "justify-center"
               }`}
             >
-              <FontAwesomeIcon 
-                icon={faRightFromBracket} 
-                className="text-lg transition-transform group-hover:-translate-x-1" 
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                className="text-lg"
               />
               {isOpen && <span className="font-bold uppercase tracking-widest text-xs">Logout</span>}
             </button>
@@ -103,9 +103,9 @@ export default function SideBar({
         </div>
       </aside>
 
-      <button 
+      <button
         onClick={toggleMobileSidebar}
-        className="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg z-50 flex items-center justify-center hover:scale-110 transition-transform active:scale-95"
+        className="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-white shadow-lg z-50 flex items-center justify-center hover:bg-[var(--primary-hover)] transition-colors"
       >
         <FontAwesomeIcon icon={isMobileOpen ? faXmark : faBars} size="lg" />
       </button>
@@ -117,8 +117,8 @@ export default function SideBar({
         />
       )}
 
-      <aside 
-        className={`md:hidden fixed top-0 left-0 h-screen bg-card z-40 w-64 shadow-2xl transition-transform duration-300 ease-in-out ${
+      <aside
+        className={`md:hidden fixed top-0 left-0 h-screen bg-card border-r border-border z-40 w-64 transition-transform duration-300 ease-in-out ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -138,10 +138,10 @@ export default function SideBar({
                   setSelectedItem(item.name);
                 }
                 }
-                className={`w-full flex items-center space-x-3 p-4 rounded-xl transition-all ${
+                className={`w-full flex items-center space-x-3 p-4 border-l-[3px] transition-colors ${
                   selectedItem === item.name
-                    ? "bg-primary/10 text-primary" 
-                    : "text-gray-500 hover:bg-secondary"
+                    ? "bg-primary/10 text-primary border-primary"
+                    : "text-gray-500 border-transparent hover:bg-secondary"
                 }`}
               >
                 <FontAwesomeIcon icon={item.icon} className="text-lg w-6" />
@@ -153,7 +153,7 @@ export default function SideBar({
           <div className="mt-auto pt-6 border-t border-border">
             <button
               onClick={handleLogout}
-              className="w-full flex items-center space-x-3 p-4 rounded-xl text-red-500 hover:bg-red-500/10 transition-all"
+              className="w-full flex items-center space-x-3 p-4 text-error hover:bg-error/10 transition-colors"
             >
               <FontAwesomeIcon icon={faRightFromBracket} className="text-lg w-6" />
               <span className="font-bold uppercase tracking-widest text-xs">Logout</span>

@@ -25,7 +25,7 @@ const Footer = () => {
                 href="https://github.com/HasanAlsaafen"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-50 dark:bg-slate-800 flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/5 transition-all shadow-sm"
+                className="w-10 h-10 border border-border flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors"
               >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
@@ -33,7 +33,7 @@ const Footer = () => {
                 href="https://linkedin.com/in/hasan-saafen-9ba5902b5"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-50 dark:bg-slate-800 flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/5 transition-all shadow-sm"
+                className="w-10 h-10 border border-border flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
@@ -49,7 +49,7 @@ const Footer = () => {
                 href="mailto:hasansaafen1234@gmail.com"
                 className="flex items-center gap-3 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary transition-colors group"
               >
-                <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-8 h-8 border border-primary/20 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <FontAwesomeIcon icon={faEnvelope} className="text-xs" />
                 </div>
                 hasansaafen1234@gmail.com
@@ -58,13 +58,13 @@ const Footer = () => {
                 href="tel:+972568973379"
                 className="flex items-center gap-3 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary transition-colors group"
               >
-                <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-8 h-8 border border-primary/20 bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <FontAwesomeIcon icon={faPhone} className="text-xs" />
                 </div>
                 +972 568973379
               </a>
               <div className="flex items-center gap-3 text-sm font-medium text-gray-500 dark:text-gray-400">
-                <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+                <div className="w-8 h-8 border border-primary/20 bg-primary/10 flex items-center justify-center text-primary">
                   <FontAwesomeIcon icon={faLocationDot} className="text-xs" />
                 </div>
                 {isArabic ? "الخليل، فلسطين" : "Hebron, Palestine"}

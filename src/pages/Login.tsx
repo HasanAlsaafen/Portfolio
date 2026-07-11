@@ -60,7 +60,7 @@ export default function Login() {
             <motion.div 
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              className="px-4 py-3 rounded-xl bg-red-500/5 border border-red-500/10 text-red-500 text-sm text-center font-medium"
+              className="px-4 py-3 bg-error/5 border border-error/20 text-error text-sm text-center font-medium"
             >
               {error}
             </motion.div>
@@ -73,7 +73,7 @@ export default function Login() {
                 type="text"
                 value={username}
                 onChange={(e) => setUserName(e.target.value)}
-                className="w-full px-5 py-4 bg-card border border-border rounded-2xl focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-text"
+                className="w-full px-5 py-4 bg-card border border-border focus:outline focus:outline-2 focus:outline-primary focus:border-primary outline-none transition-colors text-text"
                 placeholder="Enter your username"
                 required
               />
@@ -86,7 +86,7 @@ export default function Login() {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-5 py-4 bg-card border border-border rounded-2xl focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-text pr-12"
+                  className="w-full px-5 py-4 bg-card border border-border focus:outline focus:outline-2 focus:outline-primary focus:border-primary outline-none transition-colors text-text pr-12"
                   placeholder="••••••••"
                   required
                 />
@@ -103,7 +103,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary text-white font-semibold py-4 rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group disabled:opacity-70"
+              className="w-full bg-primary text-white font-semibold py-4 hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)] transition-colors duration-150 flex items-center justify-center gap-2 group disabled:opacity-70"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

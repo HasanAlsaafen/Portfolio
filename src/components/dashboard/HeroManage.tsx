@@ -177,7 +177,7 @@ export default function HeroManage() {
             {!isEditing ? (
               <button 
                 onClick={() => setIsEditing(true)}
-                className="flex items-center gap-2 px-8 py-3 bg-secondary text-primary border border-primary/20 rounded-xl font-bold hover:bg-primary/5 transition-all"
+                className="flex items-center gap-2 px-8 py-3 bg-secondary text-primary border border-primary/20 font-bold hover:bg-primary/5 transition-colors"
               >
                 Edit Content
               </button>
@@ -185,14 +185,14 @@ export default function HeroManage() {
               <>
                 <button 
                   onClick={() => setIsEditing(false)}
-                  className="px-6 py-3 text-gray-500 font-bold hover:text-text transition-all"
+                  className="px-6 py-3 text-gray-500 font-bold hover:text-text transition-colors"
                 >
                   Cancel
                 </button>
                 <button 
                   onClick={handleSubmit}
                   disabled={isSaving}
-                  className="flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-bold hover:opacity-90 transition-all disabled:opacity-50 shadow-lg shadow-primary/20"
+                  className="flex items-center gap-2 px-8 py-3 bg-primary text-white font-bold hover:opacity-90 transition-colors disabled:opacity-50"
                 >
                   {isSaving ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -215,7 +215,7 @@ export default function HeroManage() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <section className="bg-card p-6 rounded-2xl border border-border shadow-sm space-y-4">
+          <section className="bg-card p-6 border border-border space-y-4">
             <h2 className="text-lg font-bold text-text mb-4">Content Details</h2>
             
             <div className="space-y-4">
@@ -227,7 +227,7 @@ export default function HeroManage() {
                   value={formData.heading}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all font-medium text-text ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors font-medium text-text ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   placeholder="Enter main heading"
                   required
                 />
@@ -242,7 +242,7 @@ export default function HeroManage() {
                   onChange={handleInputChange}
                   disabled={!isEditing}
                   dir="rtl"
-                  className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all font-medium text-text ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors font-medium text-text ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   placeholder="أدخل العنوان الرئيسي"
                 />
               </div>
@@ -255,7 +255,7 @@ export default function HeroManage() {
                   onChange={handleInputChange}
                   disabled={!isEditing}
                   rows={4}
-                  className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all font-medium text-text resize-none ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors font-medium text-text resize-none ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   placeholder="Tell your story..."
                   required
                 />
@@ -270,7 +270,7 @@ export default function HeroManage() {
                   disabled={!isEditing}
                   rows={4}
                   dir="rtl"
-                  className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all font-medium text-text resize-none ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                  className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors font-medium text-text resize-none ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   placeholder="أخبر قصتك..."
                 />
               </div>
@@ -278,11 +278,11 @@ export default function HeroManage() {
           </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <section className="bg-card p-6 rounded-2xl border border-border shadow-sm space-y-4">
+            <section className="bg-card p-6 border border-border space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold text-text">Visuals & Files</h2>
                 {formData.backgroundImage && (
-                  <div className="w-12 h-12 rounded-lg overflow-hidden border border-border shadow-sm">
+                  <div className="w-12 h-12 overflow-hidden border border-border">
                     <img src={formData.backgroundImage} alt="Preview" className="w-full h-full object-cover" />
                   </div>
                 )}
@@ -297,7 +297,7 @@ export default function HeroManage() {
                     value={formData.backgroundImage}
                     onChange={handleInputChange}
                     disabled={!isEditing}
-                    className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all text-sm ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                    className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors text-sm ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   />
                 </div>
 
@@ -309,13 +309,13 @@ export default function HeroManage() {
                     value={formData.CV}
                     onChange={handleInputChange}
                     disabled={!isEditing}
-                    className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all text-sm ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                    className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors text-sm ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   />
                 </div>
               </div>
             </section>
 
-            <section className="bg-card p-6 rounded-2xl border border-border shadow-sm space-y-4">
+            <section className="bg-card p-6 border border-border space-y-4">
               <h2 className="text-lg font-bold text-text">Call To Action</h2>
               <div className="space-y-4">
                 <div className="space-y-1">
@@ -326,7 +326,7 @@ export default function HeroManage() {
                     value={formData.ctaText}
                     onChange={handleInputChange}
                     disabled={!isEditing}
-                    className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                    className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                   />
                 </div>
                 <div className="space-y-1">
@@ -338,7 +338,7 @@ export default function HeroManage() {
                     onChange={handleInputChange}
                     disabled={!isEditing}
                     dir="rtl"
-                    className={`w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 outline-none transition-all ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
+                    className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
                     placeholder="نص زر الإجراء"
                   />
                 </div>
@@ -346,14 +346,14 @@ export default function HeroManage() {
             </section>
           </div>
 
-          <section className="bg-card p-6 rounded-2xl border border-border shadow-sm">
+          <section className="bg-card p-6 border border-border">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold text-text">Skill Badges</h2>
               {isEditing && (
                 <button 
                   type="button"
                   onClick={addCard}
-                  className="text-primary font-bold text-sm bg-primary/10 px-4 py-2 rounded-lg hover:bg-primary/20 transition-all flex items-center gap-2"
+                  className="text-primary font-bold text-sm bg-primary/10 px-4 py-2 hover:bg-primary/20 transition-colors flex items-center gap-2"
                 >
                   <Plus size={16} /> Add Skill
                 </button>
@@ -364,7 +364,7 @@ export default function HeroManage() {
               {formData.cards.map((card, index) => (
                 <div 
                   key={index}
-                  className="p-4 bg-secondary/20 rounded-xl border border-border flex flex-col gap-3 relative group"
+                  className="p-4 bg-secondary/20 border border-border flex flex-col gap-3 relative group"
                 >
                   {isEditing && (
                     <button 
@@ -383,7 +383,7 @@ export default function HeroManage() {
                       value={card.title}
                       onChange={(e) => updateCard(index, 'title', e.target.value)}
                       disabled={!isEditing}
-                      className={`w-full bg-card border border-border rounded-lg px-3 py-2 text-sm outline-none transition-all ${!isEditing ? 'opacity-70' : 'focus:border-primary'}`}
+                      className={`w-full bg-card border border-border px-3 py-2 text-sm outline-none transition-colors ${!isEditing ? 'opacity-70' : 'focus:border-primary'}`}
                       placeholder="e.g. React"
                       required
                     />
@@ -396,7 +396,7 @@ export default function HeroManage() {
                       value={card.icon}
                       onChange={(e) => updateCard(index, 'icon', e.target.value)}
                       disabled={!isEditing}
-                      className={`w-full bg-card border border-border rounded-lg px-3 py-2 text-xs font-mono outline-none transition-all ${!isEditing ? 'opacity-70' : 'focus:border-primary'}`}
+                      className={`w-full bg-card border border-border px-3 py-2 text-xs font-mono outline-none transition-colors ${!isEditing ? 'opacity-70' : 'focus:border-primary'}`}
                       placeholder="e.g. Code2"
                     />
                   </div>

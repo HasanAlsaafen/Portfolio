@@ -19,7 +19,7 @@ const ProjectCard = ({ project, techColors, isArabic }) => {
   };
 
   return (
-    <article className="group bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-border">
+    <article className="group bg-card overflow-hidden border border-border hover:border-primary transition-colors duration-150">
       <div className="relative overflow-hidden">
         <Link to={`/project/${project._id || project.id}`} title="View Details">
           <img
@@ -59,7 +59,7 @@ const ProjectCard = ({ project, techColors, isArabic }) => {
           href={project.github || "https://github.com/HasanAlsaafen"}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 bg-black dark:bg-slate-700 text-white rounded-full py-2 px-5 text-sm font-medium hover:bg-primary transition-colors"
+          className="inline-flex items-center gap-2 bg-black dark:bg-slate-700 text-white py-2 px-5 text-sm font-medium hover:bg-primary transition-colors"
         >
           {isArabic ? "عرض على GitHub" : "View on GitHub"} <FontAwesomeIcon icon={faArrowRight} className="rtl:rotate-180" />
         </a>
@@ -126,7 +126,7 @@ const Projects = () => {
     <>
       <div className="mb-12 ms-4 md:ms-24 ">
         <h2
-          className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
+          className="text-primary text-xs font-bold uppercase tracking-wide mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
           id="projects"
         >
           {isArabic ? "أعمال مختارة" : "Selected Works"}
@@ -156,7 +156,7 @@ const Projects = () => {
             <ProjectCard key={proj._id || proj.id} project={proj} techColors={techColors} isArabic={isArabic} />
           ))
         ) : (
-          <div className="col-span-full text-center py-20 text-gray-500 bg-secondary/10 rounded-3xl border border-dashed border-border/50">
+          <div className="col-span-full text-center py-20 text-gray-500 bg-secondary/10 border border-dashed border-border">
             <p className="font-bold text-lg mb-2">{isArabic ? "لا توجد مشاريع" : "No Projects Found"}</p>
             <p className="text-sm">{isArabic ? "تحقق لاحقاً للتحديثات الجديدة!" : "Check back later for new updates!"}</p>
           </div>
@@ -170,7 +170,7 @@ const Projects = () => {
               setPage((p) => Math.max(1, p - 1));
             }}
             disabled={page === 1 || loading}
-            className="w-12 h-12 rounded-full border-2 border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed group"
+            className="w-12 h-12 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed group"
             title="Previous Page"
           >
             <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform rtl:rotate-180" />
@@ -187,20 +187,20 @@ const Projects = () => {
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
             disabled={projects.length < limit || loading}
-            className="w-12 h-12 rounded-full border-2 border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed group"
+            className="w-12 h-12 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed group"
             title="Next Page"
           >
             <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform rtl:rotate-180" />
           </button>
         </div>
 
-        <div className="w-16 h-1 bg-primary/20 rounded-full" />
+        <div className="w-16 h-1 bg-primary/20" />
 
         <a
           href="https://github.com/HasanAlsaafen"
           target="_blank"
           rel="noreferrer"
-          className="bg-black/90 dark:bg-slate-800 text-white rounded-2xl py-4 px-10 no-underline hover:bg-black hover:-translate-y-1 transition-all flex items-center gap-3 font-bold border border-white/10 shadow-xl"
+          className="bg-black dark:bg-slate-800 text-white py-4 px-10 no-underline hover:bg-primary transition-colors duration-150 flex items-center gap-3 font-semibold"
         >
           {isArabic ? "استعراض جميع المستودعات" : "Explore All Repositories"} <FontAwesomeIcon icon={faGithub} className="text-lg" />
         </a>

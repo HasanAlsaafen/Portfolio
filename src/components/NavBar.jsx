@@ -38,9 +38,9 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
   return (
     <>
       <nav
-        className={`fixed top-0 inset-inline-start-0 w-full z-50 transition-all duration-300 ${
-          scrolled 
-            ? "py-4 bg-card backdrop-blur-lg shadow-lg border-b border-border" 
+        className={`fixed top-0 inset-inline-start-0 w-full z-50 transition-colors duration-150 ${
+          scrolled
+            ? "py-4 bg-card border-b border-border"
             : "py-6 bg-transparent"
         }`}
       >
@@ -55,11 +55,10 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  className="text-sm font-semibold text-gray-600 hover:text-primary transition-colors relative group py-2"
+                  className="text-sm font-medium text-gray-600 hover:text-primary transition-colors relative group py-2 border-b-2 border-transparent hover:border-primary"
                   href={link.href}
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               </li>
             ))}
@@ -85,7 +84,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
                 <a
                   key={info.label}
                   href={info.href}
-                  className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm"
+                  className="w-10 h-10 border border-border flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors"
                   aria-label={info.label}
                 >
                   <FontAwesomeIcon icon={info.icon} className="text-sm" />
@@ -95,7 +94,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
 
             <button
               onClick={toggleDarkMode}
-              className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm ms-2"
+              className="w-10 h-10 border border-border flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors ms-2"
               aria-label="Toggle theme"
             >
               <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className="text-sm" />
@@ -103,7 +102,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
 
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all shadow-sm text-xs font-bold ms-1"
+              className="flex items-center gap-1.5 px-3 py-2 border border-border text-primary hover:bg-primary hover:text-white hover:border-primary transition-colors text-xs font-bold ms-1"
               aria-label="Toggle language"
             >
               <FontAwesomeIcon icon={faGlobe} className="text-sm" />
@@ -114,7 +113,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
           <div className="flex items-center gap-3 lg:hidden">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all"
+              className="flex items-center gap-1 px-2.5 py-1.5 border border-border text-primary text-xs font-bold hover:bg-primary hover:text-white hover:border-primary transition-colors"
               aria-label="Toggle language"
             >
               <FontAwesomeIcon icon={faGlobe} className="text-xs" />
@@ -141,10 +140,10 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
       {open && (
         <div className="fixed inset-0 z-[60] lg:hidden">
           <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/40"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute top-0 inset-inline-end-0 h-full w-[280px] bg-white dark:bg-slate-900 shadow-2xl p-8 animate-slide-in flex flex-col justify-between">
+          <div className="absolute top-0 inset-inline-end-0 h-full w-[280px] bg-card border-s border-border p-8 animate-slide-in flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-center mb-12">
                 <h2 className="text-xl font-bold text-primary">{isArabic ? "القائمة" : "Menu"}</h2>
@@ -180,7 +179,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/5 transition-all"
+                    className="w-12 h-12 border border-border flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-colors"
                   >
                     <FontAwesomeIcon icon={social.icon} className="text-xl" />
                   </a>
@@ -193,7 +192,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
                     href={info.href}
                     className="flex items-center gap-3 text-sm font-medium text-gray-500 hover:text-primary transition-colors"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+                    <div className="w-8 h-8 border border-border flex items-center justify-center text-primary">
                       <FontAwesomeIcon icon={info.icon} className="text-xs" />
                     </div>
                     {info.label === "Email" ? "hasansaafen1234@gmail.com" : "+972 568973379"}
@@ -215,10 +214,10 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
           to { transform: translateX(0); }
         }
         [dir="ltr"] .animate-slide-in {
-          animation: slide-in-ltr 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: slide-in-ltr 0.24s cubic-bezier(0.2, 0, 0.38, 0.9) forwards;
         }
         [dir="rtl"] .animate-slide-in {
-          animation: slide-in-rtl 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: slide-in-rtl 0.24s cubic-bezier(0.2, 0, 0.38, 0.9) forwards;
         }
       `}</style>
 

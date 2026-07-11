@@ -118,7 +118,7 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
                 />
               </div>
             ) : messages.length === 0 ? (
-              <div className="text-center py-20 bg-secondary/10 rounded-2xl border border-dashed border-border flex flex-col items-center">
+              <div className="text-center py-20 bg-secondary/10 border border-dashed border-border flex flex-col items-center">
                 <p className="text-gray-500 font-medium mb-4">No messages found.</p>
                 {page > 1 && (
                   <button onClick={() => setPage(page - 1)} className="text-primary hover:underline font-bold">
@@ -131,7 +131,7 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
                 {messages.map((msg) => (
                   <article
                     key={msg._id}
-                    className="bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl transition-all duration-300"
+                    className="bg-card p-6 border border-border transition-colors duration-300"
                   >
                     <div className="flex flex-col md:flex-row justify-between gap-6">
                       <div className="flex-1 space-y-4">
@@ -158,7 +158,7 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
                           <h3 className="text-lg font-bold text-text mb-2 uppercase tracking-wide text-xs opacity-50">
                             Subject: {msg.subject}
                           </h3>
-                          <p className="text-text leading-relaxed bg-secondary/5 p-4 rounded-xl border border-border/50">
+                          <p className="text-text leading-relaxed bg-secondary/5 p-4 border border-border/50">
                             {msg.message}
                           </p>
                         </div>
@@ -167,7 +167,7 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
                       <div className="flex md:flex-col justify-end gap-2">
                         <button
                           onClick={() => setShowDeleteModal(msg._id)}
-                          className="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                          className="w-10 h-10 bg-red-500/10 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors"
                           title="Delete"
                         >
                           <FontAwesomeIcon icon={faTrash} />
@@ -185,9 +185,9 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1 || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
-                    <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5 transition-transform" />
+                    <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5" />
                   </button>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Page</span>
@@ -196,9 +196,9 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
                   <button
                     onClick={() => setPage((p) => p + 1)}
                     disabled={messages.length < limit || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
-                    <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5 transition-transform" />
+                    <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5" />
                   </button>
                 </div>
               </div>
@@ -210,19 +210,19 @@ export default function MessageManage({ onMessageUpdate }: { onMessageUpdate: ()
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-card w-full max-w-md p-6 rounded-2xl shadow-2xl border border-border animate-in zoom-in-95 duration-200">
+          <div className="bg-card w-full max-w-md p-6 border border-border animate-in zoom-in-95 duration-200">
             <h3 className="text-xl font-bold mb-2 text-text">Delete Message?</h3>
             <p className="text-gray-500 mb-6 font-medium">Are you sure you want to delete this message? This action is irreversible.</p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteModal(null)}
-                className="flex-1 p-3 rounded-xl bg-secondary/50 font-bold text-text hover:bg-secondary transition-colors"
+                className="flex-1 p-3 bg-secondary/50 font-bold text-text hover:bg-secondary transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={() => showDeleteModal && handleDelete(showDeleteModal)}
-                className="flex-1 p-3 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
+                className="flex-1 p-3 bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
               >
                 Delete Permanently
               </button>

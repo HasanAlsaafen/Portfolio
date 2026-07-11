@@ -15,7 +15,7 @@ export default function NotFound() {
           </h1>
           
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="w-24 h-24 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mb-6 shadow-xl ring-4 ring-card">
+            <div className="w-24 h-24 border border-error/20 bg-error/10 text-error flex items-center justify-center mb-6">
               <FontAwesomeIcon icon={faExclamationTriangle} className="text-4xl animate-bounce" />
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-text tracking-tighter">
@@ -31,15 +31,15 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => navigate("/")}
-            className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-black rounded-2xl hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all flex items-center justify-center gap-3 group"
+            className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-semibold hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)] transition-colors duration-150 flex items-center justify-center gap-3"
           >
             <FontAwesomeIcon icon={faHome} />
             BACK TO HOME
           </button>
-          
+
           <button
             onClick={() => navigate(-1)}
-            className="w-full sm:w-auto px-8 py-4 bg-card border border-border text-text font-black rounded-2xl hover:bg-secondary transition-all flex items-center justify-center gap-3"
+            className="w-full sm:w-auto px-8 py-4 bg-card border border-border text-text font-semibold hover:bg-secondary transition-colors flex items-center justify-center gap-3"
           >
             GO BACK
           </button>

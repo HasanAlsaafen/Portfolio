@@ -2,21 +2,33 @@
 
 @layer base {
   :root {
-    --primary-color: #082a65;
-    --secondary-color: #f8f9fa;
-    --text-color: #000000;
-    --card-bg: #ffffff;
+    --primary-color: #0f62fe;
+    --primary-hover: #0353e9;
+    --primary-active: #002d9c;
+    --secondary-color: #ffffff;
+    --text-color: #161616;
+    --text-secondary-color: #525252;
+    --card-bg: #f4f4f4;
     --card-shadow: rgba(0, 0, 0, 0.1);
-    --border-color: #f3f4f6; 
+    --border-color: #e0e0e0;
+    --success-color: #24a148;
+    --error-color: #da1e28;
+    --warning-color: #f1c21b;
   }
 
   .dark {
-    --primary-color: #60a5fa;
-    --secondary-color: #0f172a;
-    --text-color: #f1f5f9;
-    --card-bg: #1e293b;
+    --primary-color: #4589ff;
+    --primary-hover: #649dff;
+    --primary-active: #82b0ff;
+    --secondary-color: #161616;
+    --text-color: #f4f4f4;
+    --text-secondary-color: #c6c6c6;
+    --card-bg: #262626;
     --card-shadow: rgba(0, 0, 0, 0.3);
-    --border-color: #1e293b;
+    --border-color: #393939;
+    --success-color: #42be65;
+    --error-color: #fa4d56;
+    --warning-color: #f1c21b;
   }
 
   body {
@@ -32,9 +44,14 @@
   --color-primary: var(--primary-color);
   --color-secondary: var(--secondary-color);
   --color-text: var(--text-color);
+  --color-text-secondary: var(--text-secondary-color);
   --color-card: var(--card-bg);
   --color-border: var(--border-color);
-  --font-family-sans: "Inter", sans-serif;
+  --color-success: var(--success-color);
+  --color-error: var(--error-color);
+  --color-warning: var(--warning-color);
+  --font-family-sans: "IBM Plex Sans", sans-serif;
+  --font-family-mono: "IBM Plex Mono", monospace;
 }
 
         .custom-scrollbar::-webkit-scrollbar {

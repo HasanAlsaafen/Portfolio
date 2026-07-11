@@ -170,7 +170,7 @@ export default function CertifacateManage() {
                     });
                   }
                 }}
-                className="p-4 shadow-xl rounded-2xl bg-primary border-shadow text-white font-bold hover:-translate-y-0.5 shadow-primary/25 hover:shadow-primary/40 transition-all flex items-center gap-2"
+                className="p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center gap-2"
               >
                 <FontAwesomeIcon icon={showForm ? faXmark : faPlus} />
                 {showForm ? "Cancel" : "Create New Certificate"}
@@ -187,7 +187,7 @@ export default function CertifacateManage() {
           )}
 
           {showForm && (
-            <article className="p-4 md:p-8 bg-card shadow-2xl rounded-2xl border border-border animate-in fade-in slide-in-from-top-4 duration-300">
+            <article className="p-4 md:p-8 bg-card border border-border animate-in fade-in slide-in-from-top-4 duration-300">
               <h2 className="text-2xl font-bold mb-6">
                 {editingCertificate ? "Edit Certificate" : "Create New Certificate"}
               </h2>
@@ -200,7 +200,7 @@ export default function CertifacateManage() {
                     value={formData.title}
                     onChange={handleInputChange}
                     placeholder="Certificate title"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -212,7 +212,7 @@ export default function CertifacateManage() {
                     value={formData.issuer}
                     onChange={handleInputChange}
                     placeholder="Organization name"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -223,7 +223,7 @@ export default function CertifacateManage() {
                     name="issueDate"
                     value={formData.issueDate}
                     onChange={handleInputChange}
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -235,7 +235,7 @@ export default function CertifacateManage() {
                     value={formData.credentialURL}
                     onChange={handleInputChange}
                     placeholder="https://..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -247,7 +247,7 @@ export default function CertifacateManage() {
                     value={formData.image}
                     onChange={handleInputChange}
                     placeholder="https://..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                     required
                   />
                 </div>
@@ -258,7 +258,7 @@ export default function CertifacateManage() {
                     value={formData.description}
                     onChange={handleInputChange}
                     placeholder="Brief description of the certification..."
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors h-32 resize-none"
                     required
                   />
                 </div>
@@ -270,12 +270,12 @@ export default function CertifacateManage() {
                     onChange={handleInputChange}
                     placeholder="وصف مختصر للشهادة..."
                     dir="rtl"
-                    className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all h-32 resize-none"
+                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors h-32 resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="md:col-span-2 p-4 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
+                  className="md:col-span-2 p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center justify-center gap-2"
                 >
                   <FontAwesomeIcon icon={faCheck} />
                   {editingCertificate ? "Update Certificate" : "Create Certificate"}
@@ -302,7 +302,7 @@ export default function CertifacateManage() {
                 />
               </div>
             ) : certificates.length === 0 ? (
-              <div className="text-center py-20 bg-secondary/10 rounded-2xl border border-dashed border-border flex flex-col items-center">
+              <div className="text-center py-20 bg-secondary/10 border border-dashed border-border flex flex-col items-center">
                 <p className="text-gray-500 font-medium mb-4">No certificates found on this page.</p>
                 {page > 1 && (
                   <button onClick={() => setPage(page - 1)} className="text-primary hover:underline font-bold">
@@ -315,7 +315,7 @@ export default function CertifacateManage() {
                 {certificates.map((cert) => (
                   <article
                     key={cert._id}
-                    className="group relative bg-card rounded-2xl overflow-hidden shadow-lg border border-border hover:shadow-2xl transition-all duration-300 flex flex-col"
+                    className="group relative bg-card overflow-hidden border border-border transition-colors duration-300 flex flex-col"
                   >
                     <div className="relative overflow-hidden aspect-video bg-gray-50 dark:bg-slate-900 flex items-center justify-center p-4">
                       <img
@@ -326,14 +326,14 @@ export default function CertifacateManage() {
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                         <button
                           onClick={() => handleEdit(cert)}
-                          className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                          className="w-10 h-10 bg-blue-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                           title="Edit"
                         >
                           <FontAwesomeIcon icon={faEdit} />
                         </button>
                         <button
                           onClick={() => setShowDeleteModal(cert._id)}
-                          className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform"
+                          className="w-10 h-10 bg-red-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                           title="Delete"
                         >
                           <FontAwesomeIcon icon={faTrash} />
@@ -350,7 +350,7 @@ export default function CertifacateManage() {
                           href={cert.credentialURL}
                           target="_blank"
                           rel="noreferrer"
-                          className="w-full py-2 rounded-lg bg-primary/10 text-primary text-xs font-bold text-center hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2"
+                          className="w-full py-2 bg-primary/10 text-primary text-xs font-bold text-center hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2"
                         >
                           <FontAwesomeIcon icon={faArrowRight} /> Verify
                         </a>
@@ -367,9 +367,9 @@ export default function CertifacateManage() {
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1 || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
-                    <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5 transition-transform" />
+                    <FontAwesomeIcon icon={faChevronLeft} className="group-hover:-translate-x-0.5" />
                   </button>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Page</span>
@@ -378,9 +378,9 @@ export default function CertifacateManage() {
                   <button
                     onClick={() => setPage((p) => p + 1)}
                     disabled={certificates.length < limit || loading}
-                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text hover:bg-primary hover:text-white disabled:opacity-30 transition-all group"
+                    className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
                   >
-                    <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5 transition-transform" />
+                    <FontAwesomeIcon icon={faChevronRight} className="group-hover:translate-x-0.5" />
                   </button>
                 </div>
               </div>
@@ -391,19 +391,19 @@ export default function CertifacateManage() {
 
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-card w-full max-w-md p-6 rounded-2xl shadow-2xl border border-border animate-in zoom-in-95 duration-200">
+          <div className="bg-card w-full max-w-md p-6 border border-border animate-in zoom-in-95 duration-200">
             <h3 className="text-xl font-bold mb-2">Delete Certificate?</h3>
             <p className="text-gray-500 mb-6">Are you sure you want to delete this certificate? This action cannot be undone.</p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteModal(null)}
-                className="flex-1 p-3 rounded-xl bg-secondary/50 font-bold hover:bg-secondary transition-colors"
+                className="flex-1 p-3 bg-secondary/50 font-bold hover:bg-secondary transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={() => showDeleteModal && handleDelete(showDeleteModal)}
-                className="flex-1 p-3 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
+                className="flex-1 p-3 bg-red-500 text-white font-bold hover:bg-red-600 transition-colors"
               >
                 Delete
               </button>

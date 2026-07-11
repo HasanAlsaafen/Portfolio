@@ -100,7 +100,7 @@ export default function ProjectDetails() {
         <section className="container mx-auto max-w-5xl py-10">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-primary transition-colors font-medium mb-8 bg-card px-4 py-2 rounded-full shadow-sm border border-border"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-primary transition-colors font-medium mb-8 bg-card px-4 py-2 border border-border"
           >
             <FontAwesomeIcon icon={faArrowLeft} /> {isArabic ? "العودة للرئيسية" : "Back to Home"}
           </Link>
@@ -117,12 +117,12 @@ export default function ProjectDetails() {
               />
             </div>
           ) : !project ? (
-            <div className="text-center py-20 text-gray-500 bg-card rounded-3xl border border-dashed border-border/50">
+            <div className="text-center py-20 text-gray-500 bg-card border border-dashed border-border">
               <p className="font-bold text-lg mb-2">{isArabic ? "المشروع غير موجود" : "Project Not Found"}</p>
               <p className="text-sm">{isArabic ? "لم نتمكن من العثور على المشروع المطلوب." : "We couldn't find the requested project."}</p>
             </div>
           ) : (
-            <div className="bg-card rounded-3xl overflow-hidden shadow-xl border border-border">
+            <div className="bg-card overflow-hidden border border-border">
               {project.imageUrl && (
                  <div className="w-full h-64 md:h-96 relative">
                    <img
@@ -164,7 +164,7 @@ export default function ProjectDetails() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 bg-black dark:bg-slate-800 text-white rounded-xl py-3 px-6 font-bold hover:-translate-y-1 hover:shadow-lg transition-all border border-transparent dark:border-white/10"
+                      className="inline-flex items-center gap-2 bg-black dark:bg-slate-800 text-white py-3 px-6 font-bold hover:bg-primary transition-colors duration-150 border border-transparent dark:border-white/10"
                     >
                       <FontAwesomeIcon icon={faGithub} className="text-xl" /> {isArabic ? "الكود المصدر" : "Source Code"}
                     </a>
@@ -174,7 +174,7 @@ export default function ProjectDetails() {
                       href={project.projectUrl || project.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 bg-primary text-white rounded-xl py-3 px-6 font-bold hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30 transition-all"
+                      className="inline-flex items-center gap-2 bg-primary text-white py-3 px-6 font-bold hover:bg-[var(--primary-hover)] transition-colors duration-150"
                     >
                       <FontAwesomeIcon icon={faGlobe} className="text-xl" /> {isArabic ? "عرض المشروع" : "Live Demo or Project Link"}
                     </a>

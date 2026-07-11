@@ -43,7 +43,7 @@ const iconMap = {
 };
 
 const SkillBadge = ({ icon, label }) => (
-  <div className="flex items-center gap-2 px-4 py-2 bg-card shadow-sm border border-border rounded-xl text-xs font-bold text-gray-600 dark:text-gray-300">
+  <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full text-xs font-bold text-gray-600 dark:text-gray-300">
     <FontAwesomeIcon icon={iconMap[icon] || faCode} className="text-primary" />
     {label}
   </div>
@@ -116,7 +116,7 @@ const AboutSection = () => {
         <div className="lg:col-span-7 space-y-8">
           <header>
             <h2
-              className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
+              className="text-primary text-xs font-bold uppercase tracking-wide mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
               id="about-heading"
             >
               {isArabic ?  "مطور شامل مختص في الباك اند" : "Full-Stack & Back-end developer"}
@@ -141,7 +141,7 @@ const AboutSection = () => {
             {displayData.CV && displayData.CV !== "#" && (
               <a
                 href={displayData.CV}
-                className="px-8 py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3 focus:ring-2 focus:ring-primary focus:ring-offset-2 outline-none"
+                className="px-8 py-4 bg-primary text-white font-semibold hover:bg-[var(--primary-hover)] active:bg-[var(--primary-active)] transition-colors duration-150 flex items-center gap-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Download CV as PDF"
@@ -160,12 +160,11 @@ const AboutSection = () => {
 
         <div className="lg:col-span-5 relative" aria-hidden="true">
           <div className="relative z-10">
-            <div className="absolute inset-0 bg-primary/5 rounded-[3rem] -rotate-6 scale-105" />
-            <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 rounded-[3rem] rotate-3 scale-105" />
-            
-            <div className="relative bg-card p-4 rounded-[3rem] shadow-2xl border border-border ring-1 ring-gray-900/5">
+            <div className="absolute -top-4 -right-4 w-full h-full bg-primary" />
+
+            <div className="relative bg-card p-4 border border-border">
               <img
-                className="w-full aspect-square object-cover rounded-[2.5rem] shadow-inner"
+                className="w-full aspect-square object-cover"
                 src={fs1}
                 alt={"Professional profile photo"}
               />
@@ -174,15 +173,6 @@ const AboutSection = () => {
         </div>
       </div>
 
-      <style>{`
-        @keyframes bounce-subtle {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-subtle {
-          animation: bounce-subtle 4s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 };

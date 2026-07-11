@@ -26,39 +26,39 @@ export default function StatusAlert({
   const config = {
     success: {
       icon: faCheckCircle,
-      bg: 'bg-green-500',
-      shadow: 'shadow-green-500/20',
+      accent: 'border-success',
+      iconColor: 'text-success',
       label: 'Success'
     },
     error: {
       icon: faTimesCircle,
-      bg: 'bg-red-500',
-      shadow: 'shadow-red-500/20',
+      accent: 'border-error',
+      iconColor: 'text-error',
       label: 'Error'
     },
     info: {
       icon: faInfoCircle,
-      bg: 'bg-blue-500',
-      shadow: 'shadow-blue-500/20',
+      accent: 'border-primary',
+      iconColor: 'text-primary',
       label: 'Info'
     }
   };
 
-  const { icon, bg, shadow, label } = config[type];
+  const { icon, accent, iconColor, label } = config[type];
 
   return (
-    <div className={`fixed bottom-8 right-8 z-[110] flex items-center gap-4 px-6 py-4 rounded-2xl text-white font-bold ${bg} ${shadow} shadow-2xl animate-in slide-in-from-right-10 duration-500 border border-white/10 backdrop-blur-sm bg-opacity-90`}>
-      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
+    <div className={`fixed bottom-8 right-8 z-[110] flex items-center gap-4 px-6 py-4 bg-card text-text border border-border border-l-4 ${accent} animate-in slide-in-from-right-10 duration-300`}>
+      <div className={`flex items-center justify-center w-8 h-8 ${iconColor}`}>
         <FontAwesomeIcon icon={icon} />
       </div>
       <div>
-        <p className="text-[10px] uppercase tracking-widest opacity-70 mb-0.5">{label}</p>
+        <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-0.5">{label}</p>
         <p className="text-sm font-bold leading-none">{message}</p>
       </div>
       {onClose && (
-        <button 
+        <button
           onClick={onClose}
-          className="ml-4 hover:scale-110 transition-transform opacity-70 hover:opacity-100 p-1"
+          className="ml-4 opacity-70 hover:opacity-100 transition-opacity p-1"
         >
           <FontAwesomeIcon icon={faXmark} />
         </button>

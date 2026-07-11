@@ -107,7 +107,7 @@ export default function ColorManage() {
             </h1>
             <button
               onClick={() => setShowForm(!showForm)}
-              className="p-4 shadow-xl rounded-2xl bg-primary border-shadow text-white font-bold hover:-translate-y-0.5 shadow-primary/25 hover:shadow-primary/40 transition-all flex items-center gap-2"
+              className="p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center gap-2"
             >
               <FontAwesomeIcon icon={showForm ? faXmark : faPlus} />
               {showForm ? "Cancel" : "Add New Tech Color"}
@@ -124,7 +124,7 @@ export default function ColorManage() {
           )}
 
         {showForm && (
-          <article className="p-4 md:p-8 bg-card shadow-2xl rounded-2xl border border-border animate-in fade-in slide-in-from-top-4 duration-300">
+          <article className="p-4 md:p-8 bg-card border border-border animate-in fade-in slide-in-from-top-4 duration-300">
             <h2 className="text-2xl font-bold mb-6">Create New Technology Color</h2>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
@@ -135,7 +135,7 @@ export default function ColorManage() {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="e.g. React"
-                  className="w-full p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all"
+                  className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
                   required
                 />
               </div>
@@ -147,14 +147,14 @@ export default function ColorManage() {
                     name="bgColor"
                     value={formData.bgColor}
                     onChange={handleInputChange}
-                    className="h-14 w-20 p-1 rounded-xl bg-secondary/20 border border-border cursor-pointer"
+                    className="h-14 w-20 p-1 bg-secondary/20 border border-border cursor-pointer"
                   />
                   <input
                     type="text"
                     name="bgColor"
                     value={formData.bgColor}
                     onChange={handleInputChange}
-                    className="flex-1 p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all font-mono"
+                    className="flex-1 p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors font-mono"
                   />
                 </div>
               </div>
@@ -166,14 +166,14 @@ export default function ColorManage() {
                     name="textColor"
                     value={formData.textColor}
                     onChange={handleInputChange}
-                    className="h-14 w-20 p-1 rounded-xl bg-secondary/20 border border-border cursor-pointer"
+                    className="h-14 w-20 p-1 bg-secondary/20 border border-border cursor-pointer"
                   />
                   <input
                     type="text"
                     name="textColor"
                     value={formData.textColor}
                     onChange={handleInputChange}
-                    className="flex-1 p-4 rounded-xl bg-secondary/20 border border-border focus:border-primary outline-none transition-all font-mono"
+                    className="flex-1 p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors font-mono"
                   />
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function ColorManage() {
                   <label className="text-sm font-semibold text-gray-400">Preview</label>
                   <div className="mt-2 flex items-center gap-4">
                     <span 
-                      className="px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                      className="px-4 py-2 rounded-full text-sm font-bold"
                       style={{ backgroundColor: formData.bgColor, color: formData.textColor }}
                     >
                       {formData.name || "Preview Name"}
@@ -192,7 +192,7 @@ export default function ColorManage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full p-4 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
+                  className="w-full p-4 bg-primary text-white font-bold hover:bg-[var(--primary-hover)] transition-colors flex items-center justify-center gap-2"
                 >
                   <FontAwesomeIcon icon={faCheck} />
                   Save Technology Color
@@ -208,14 +208,14 @@ export default function ColorManage() {
               <Loader message="Brewing your palette..." />
             </div>
           ) : colors.length === 0 ? (
-            <div className="col-span-full py-12 text-center text-gray-500 bg-card rounded-2xl border border-dashed border-border">
+            <div className="col-span-full py-12 text-center text-gray-500 bg-card border border-dashed border-border">
               No tech colors added yet.
             </div>
           ) : (
             colors.map((color) => (
               <div 
                 key={color._id}
-                className="group p-4 bg-card rounded-2xl border border-border hover:shadow-xl transition-all flex items-center justify-between"
+                className="group p-4 bg-card border border-border transition-colors flex items-center justify-between"
               >
                 <span 
                   className="px-3 py-1 rounded-full text-xs font-bold"
@@ -225,7 +225,7 @@ export default function ColorManage() {
                 </span>
                 <button
                   onClick={() => handleDelete(color._id)}
-                  className="w-8 h-8 rounded-full bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
+                  className="w-8 h-8 bg-red-500/10 text-red-500 opacity-0 group-hover:opacity-100 transition-colors hover:bg-red-500 hover:text-white"
                 >
                   <FontAwesomeIcon icon={faTrash} size="sm" />
                 </button>
