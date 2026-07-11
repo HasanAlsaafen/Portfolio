@@ -12,6 +12,7 @@ import ErrorMessage from "../components/common/ErrorMessage";
 import ChatBot from "../components/ChatBot";
 import { useApi } from "../hooks/useApi";
 import { useLanguage } from "../context/LanguageContext";
+import { handleImageError } from "../utils/imageFallback";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -128,6 +129,7 @@ export default function ProjectDetails() {
                    <img
                      src={project.imageUrl}
                      alt={project.title}
+                     onError={handleImageError}
                      className="w-full h-full object-cover"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />

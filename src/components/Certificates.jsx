@@ -9,6 +9,7 @@ import {
   faChevronRight 
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { handleImageError } from "../utils/imageFallback";
 
 const CertificateCard = ({ certificate, isArabic }) => {
   return (
@@ -17,6 +18,7 @@ const CertificateCard = ({ certificate, isArabic }) => {
         <img
           src={certificate.image}
           alt={certificate.title}
+          onError={handleImageError}
           className="max-h-full max-w-full object-contain"
         />
         <div className="absolute top-2 start-2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
