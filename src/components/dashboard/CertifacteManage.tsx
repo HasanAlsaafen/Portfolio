@@ -13,6 +13,7 @@ import {
 import Loader from "../common/Loader";
 import ErrorMessage from "../common/ErrorMessage";
 import StatusAlert from "../common/StatusAlert";
+import FileUploadInput from "./FileUploadInput";
 
 interface Certificate {
   _id: string;
@@ -240,15 +241,13 @@ export default function CertifacateManage() {
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2">
-                  <label className="text-sm font-semibold text-gray-400">Image URL</label>
-                  <input
-                    type="text"
-                    name="image"
+                  <FileUploadInput
+                    label="Image"
                     value={formData.image}
-                    onChange={handleInputChange}
-                    placeholder="https://..."
-                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
-                    required
+                    onChange={(url) => setFormData((prev) => ({ ...prev, image: url }))}
+                    endpoint="image"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    previewImage
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2">

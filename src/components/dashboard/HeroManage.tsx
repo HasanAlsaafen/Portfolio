@@ -7,6 +7,7 @@ import {
 import Loader from '../common/Loader';
 import ErrorMessage from '../common/ErrorMessage';
 import StatusAlert from '../common/StatusAlert';
+import FileUploadInput from './FileUploadInput';
 interface Card {
   _id?: string;
   title: string;
@@ -289,29 +290,23 @@ export default function HeroManage() {
               </div>
               
               <div className="space-y-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Profile Image URL</label>
-                  <input 
-                    type="text" 
-                    name="backgroundImage"
-                    value={formData.backgroundImage}
-                    onChange={handleInputChange}
-                    disabled={!isEditing}
-                    className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors text-sm ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
-                  />
-                </div>
+                <FileUploadInput
+                  label="Profile Image"
+                  value={formData.backgroundImage}
+                  onChange={(url) => setFormData((prev) => ({ ...prev, backgroundImage: url }))}
+                  endpoint="image"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  disabled={!isEditing}
+                />
 
-                <div className="space-y-1">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">CV URL (G-Drive/Direct Link)</label>
-                  <input 
-                    type="text" 
-                    name="CV"
-                    value={formData.CV}
-                    onChange={handleInputChange}
-                    disabled={!isEditing}
-                    className={`w-full bg-secondary/50 border border-border px-4 py-3 outline-none transition-colors text-sm ${!isEditing ? 'opacity-70 cursor-not-allowed' : 'focus:border-primary'}`}
-                  />
-                </div>
+                <FileUploadInput
+                  label="CV"
+                  value={formData.CV}
+                  onChange={(url) => setFormData((prev) => ({ ...prev, CV: url }))}
+                  endpoint="cv"
+                  accept="application/pdf"
+                  disabled={!isEditing}
+                />
               </div>
             </section>
 

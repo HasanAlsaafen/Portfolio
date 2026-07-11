@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import Loader from "../common/Loader";
 import ErrorMessage from "../common/ErrorMessage";
 import StatusAlert from "../common/StatusAlert";
+import FileUploadInput from "./FileUploadInput";
 
 interface Project {
   _id?: string;
@@ -271,17 +272,12 @@ export const ProjectManage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-400">
-                    Image URL
-                  </label>
-                  <input
-                    type="text"
-                    name="imageUrl"
+                  <FileUploadInput
+                    label="Image"
                     value={formData.imageUrl}
-                    onChange={handleInputChange}
-                    placeholder="https://..."
-                    className="w-full p-4 bg-secondary/20 border border-border focus:border-primary outline-none transition-colors"
-                    required
+                    onChange={(url) => setFormData((prev) => ({ ...prev, imageUrl: url }))}
+                    endpoint="image"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2">

@@ -125,11 +125,12 @@ const ChatBot = () => {
     setInput("");
     setIsLoading(true);
 
+    // Matches the server's history schema: { role: "user" | "assistant" | "model", content: string }.
     const history = updatedMessages
       .slice(1, -1)
       .map((msg) => ({
-        role: msg.role === "assistant" ? "model" : msg.role,
-        parts: [{ text: msg.content }],
+        role: msg.role,
+        content: msg.content,
       }));
 
     const assistantIndex = updatedMessages.length;
@@ -238,7 +239,8 @@ const ChatBot = () => {
           if (eventType === "message" && dataStr) {
             try {
               const obj = JSON.parse(dataStr);
-              appendDelta(obj?.delta ?? obj?.content ?? obj?.text ?? "");
+              // Server sends `data: { "delta": "..." }` and `data: { "chunk": "..." }` events.
+              appendDelta(obj?.delta ?? obj?.chunk ?? "");
             } catch {
               appendDelta(dataStr);
             }
