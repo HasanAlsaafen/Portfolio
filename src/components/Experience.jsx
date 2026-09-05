@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBriefcase,
+  faLocationDot,
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../context/LanguageContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
@@ -77,12 +82,14 @@ const Experience = () => {
   const [experiences, setExperiences] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const limit = 3;
 
   useEffect(() => {
     const fetchExperiences = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${API_URL}/experiences`);
+        const response = await fetch(`${API_URL}/experiences?limit=${limit}&page=${page}`);
         if (!response.ok) throw new Error("Failed to fetch experiences");
         const data = await response.json();
         setExperiences(Array.isArray(data) ? data : []);
@@ -95,7 +102,7 @@ const Experience = () => {
     };
 
     fetchExperiences();
-  }, []);
+  }, [page]);
 
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8">
