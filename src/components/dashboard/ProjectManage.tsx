@@ -14,7 +14,7 @@ import Loader from "../common/Loader";
 import ErrorMessage from "../common/ErrorMessage";
 import StatusAlert from "../common/StatusAlert";
 import FileUploadInput from "./FileUploadInput";
-import { handleImageError } from "../../utils/imageFallback";
+import { handleImageError, FALLBACK_IMAGE } from "../../utils/imageFallback";
 
 interface Project {
   _id?: string;
@@ -400,7 +400,7 @@ export const ProjectManage = () => {
                   >
                     <div className="relative overflow-hidden aspect-video">
                       <img
-                        src={project.imageUrl}
+                        src={project.imageUrl || FALLBACK_IMAGE}
                         alt={project.title}
                         onError={handleImageError}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

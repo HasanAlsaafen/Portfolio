@@ -6,7 +6,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { Link } from "react-router-dom";
 import Loader from "./common/Loader";
 import ErrorMessage from "./common/ErrorMessage";
-import { handleImageError } from "../utils/imageFallback";
+import { handleImageError, FALLBACK_IMAGE } from "../utils/imageFallback";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -24,7 +24,7 @@ const ProjectCard = ({ project, techColors, isArabic }) => {
       <div className="relative overflow-hidden">
         <Link to={`/project/${project._id || project.id}`} title="View Details">
           <img
-            src={project.imageUrl}
+            src={project.imageUrl || FALLBACK_IMAGE}
             alt={project.title}
             onError={handleImageError}
             className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"

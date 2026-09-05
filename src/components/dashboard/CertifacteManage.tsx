@@ -14,7 +14,7 @@ import Loader from "../common/Loader";
 import ErrorMessage from "../common/ErrorMessage";
 import StatusAlert from "../common/StatusAlert";
 import FileUploadInput from "./FileUploadInput";
-import { handleImageError } from "../../utils/imageFallback";
+import { handleImageError, FALLBACK_IMAGE } from "../../utils/imageFallback";
 
 interface Certificate {
   _id: string;
@@ -319,7 +319,7 @@ export default function CertifacateManage() {
                   >
                     <div className="relative overflow-hidden aspect-video bg-gray-50 dark:bg-slate-900 flex items-center justify-center p-4">
                       <img
-                        src={cert.image}
+                        src={cert.image || FALLBACK_IMAGE}
                         alt={cert.title}
                         onError={handleImageError}
                         className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"

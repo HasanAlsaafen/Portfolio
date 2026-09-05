@@ -9,14 +9,14 @@ import {
   faChevronRight 
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { handleImageError } from "../utils/imageFallback";
+import { handleImageError, FALLBACK_IMAGE } from "../utils/imageFallback";
 
 const CertificateCard = ({ certificate, isArabic }) => {
   return (
     <article className="group bg-card border border-border overflow-hidden hover:border-primary transition-colors duration-150 flex flex-col md:flex-row max-w-2xl w-full">
       <div className="relative w-full md:w-1/3 h-48 md:h-auto overflow-hidden bg-gray-50 dark:bg-slate-900 flex items-center justify-center p-4">
         <img
-          src={certificate.image}
+          src={certificate.image || FALLBACK_IMAGE}
           alt={certificate.title}
           onError={handleImageError}
           className="max-h-full max-w-full object-contain"

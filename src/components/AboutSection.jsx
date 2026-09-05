@@ -149,9 +149,9 @@ const AboutSection = () => {
                 {isArabic ? "تحميل السيرة الذاتية" : "Download My CV"} <FontAwesomeIcon icon={faDownload} />
               </a>
             )}
-            <a 
-              href="#contact" 
-              className="text-text font-bold hover:text-primary transition-colors flex items-center gap-2 group focus:ring-2 focus:ring-primary rounded-lg p-1 outline-none"
+            <a
+              href="#contact"
+              className="text-primary font-bold hover:text-[var(--primary-hover)] transition-colors flex items-center gap-2 group focus:ring-2 focus:ring-primary rounded-lg p-1 outline-none"
             >
               {isArabic ? (displayData.ctaText_ar || displayData.ctaText || "لنتحدث") : (displayData.ctaText || "Let's talk")} <span className={`${isArabic ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform`} aria-hidden="true">{isArabic ? '←' : '→'}</span>
             </a>
