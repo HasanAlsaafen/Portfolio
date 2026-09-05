@@ -149,11 +149,46 @@ const Experience = () => {
             </p>
           </div>
         ) : (
-          <section aria-labelledby="experience" className="max-w-3xl">
-            {experiences.map((item) => (
-              <ExperienceCard key={item._id || item.id} item={item} isArabic={isArabic} />
-            ))}
-          </section>
+          <>
+            <section aria-labelledby="experience" className="max-w-3xl">
+              {experiences.map((item) => (
+                <ExperienceCard key={item._id || item.id} item={item} isArabic={isArabic} />
+              ))}
+            </section>
+
+            <div className="flex flex-col items-center gap-4 pt-4">
+              <div className="flex items-center gap-6">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1 || loading}
+                  className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className="group-hover:-translate-x-0.5 rtl:group-hover:translate-x-0.5 transition-transform rtl:rotate-180"
+                  />
+                </button>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                    {isArabic ? "صفحة" : "Page"}
+                  </span>
+                  <span className="text-xl font-black text-primary">
+                    {page}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setPage((p) => p + 1)}
+                  disabled={experiences.length < limit || loading}
+                  className="w-10 h-10 border border-border flex items-center justify-center text-text hover:bg-primary hover:border-primary hover:text-white disabled:opacity-30 transition-colors group"
+                >
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    className="group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform rtl:rotate-180"
+                  />
+                </button>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </div>
