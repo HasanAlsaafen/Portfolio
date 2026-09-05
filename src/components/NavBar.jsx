@@ -19,6 +19,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }) {
 
   const navLinks = [
     { href: "#about", label: isArabic ? "حول" : "About" },
+    { href: "#experience", label: isArabic ? "الخبرة" : "Experience" },
     { href: "#projects", label: isArabic ? "المشاريع" : "Projects" },
     { href: "#opensource", label: isArabic ? "مفتوح المصدر" : "Open Source" },
     { href: "#certificates", label: isArabic ? "الشهادات" : "Certificates" },

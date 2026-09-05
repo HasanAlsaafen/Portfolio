@@ -125,8 +125,9 @@ const Projects = () => {
   }, [page]);
 
   return (
-    <>
-      <div className="mb-12 ms-4 md:ms-24 ">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto text-center md:text-start">
+      <div className="mb-12 ms-4 md:ms-0">
         <h2
           className="text-primary text-xs font-bold uppercase tracking-wide mb-4 flex items-center gap-3 before:content-[''] before:w-8 before:h-[1px] before:bg-primary/30"
           id="projects"
@@ -138,8 +139,8 @@ const Projects = () => {
         </h3>
       </div>
 
-      <section 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 ms-4 md:ms-24 min-h-[400px]"
+      <section
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 min-h-[400px]"
         aria-labelledby="projects"
       >
         {loading ? (
@@ -207,7 +208,8 @@ const Projects = () => {
           {isArabic ? "استعراض جميع المستودعات" : "Explore All Repositories"} <FontAwesomeIcon icon={faGithub} className="text-lg" />
         </a>
       </div>
-    </>
+      </div>
+    </div>
   );
 };
 

@@ -11,16 +11,20 @@ import {
   faRightFromBracket,
   faPalette,
   faCodeBranch,
+  faBriefcase,
+  faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 const menuItems = [
   { name: "Main", icon: faHome  },
+  { name: "Experience", icon: faBriefcase },
   { name: "Projects", icon: faProjectDiagram },
   { name: "Certificates", icon: faCertificate },
   { name: "Open Source", icon: faCodeBranch },
   { name: "Colors", icon: faPalette },
+  { name: "Chatbot", icon: faRobot },
   { name: "Messages", icon: faEnvelope },
 ];
 

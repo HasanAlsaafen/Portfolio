@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Navbar from "../components/NavBar";
 import AboutSection from "../components/AboutSection";
+import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Certificates from "../components/Certificates";
 import OpenSource from "../components/OpenSource";
@@ -36,6 +37,7 @@ export default function Main()
          <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
          <main className="p-4 lg:p-8">
            <AboutSection />
+           <Experience />
            <Projects />
            <OpenSource />
            <Certificates />
